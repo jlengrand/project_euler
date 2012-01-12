@@ -10,10 +10,26 @@
  Find the largest palindrome made from the product of two 3-digit numbers.
 #---
 """ 
-def prod_palindrom(value):
+def largest_palindrom():
     """
     Returns the largest palindrom made from the product of two 3-digits number
     """
-    return 1
+    three_digits = range(100, 1000)
+    largest = 0
+
+    for digit_1 in three_digits:
+        for digit_2 in three_digits:
+            val = digit_1 * digit_2
+            if is_palindrom(val):
+                if largest < val:
+                    largest = val
+    return largest
+
+def is_palindrom(number):
+    """
+    returns True if a number is a palindrom, False otherwise
+    """
+    return str(number)[::-1] == str(number)
 
 if __name__ == '__main__':
+    print "Answer : %d " % (largest_palindrom())

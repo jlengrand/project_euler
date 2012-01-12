@@ -12,7 +12,7 @@ The script are named as e_problemnumber_inc. The higher the inc, the finer my so
 
 
 
-**WARNING : Spoil inside for those who want to solve by themselves :)**
+**WARNING : Spoil inside for those who want to solve problems by themselves :)**
 
 
 ## Copyright

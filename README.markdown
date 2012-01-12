@@ -14,11 +14,6 @@ The script are named as e_problemnumber_inc. The higher the inc, the finer my so
 
 **WARNING : Spoil inside for those who want to solve problems by themselves :)**
 
-
-## Copyright
-
-Copyright © 2011 Julien Lengrand-Lambert
-
 ## Contact
 
 I would enjoy having feedback if you try to solve euler's problems too :).

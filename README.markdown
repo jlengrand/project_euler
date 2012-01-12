@@ -6,7 +6,7 @@ I play around with them in order to sharpen my algorithm skills.
 This is always challenging to solve problems on paper and fantastic to come up with an algorithmic solution. 
 I use Python for its simplicity. Simple Python code is very similar to paper solution, and fast to implement.
 
-Each script runs by itself and contains one of several functions that directly solve the function. Then, running a script should give you the answer directly. 
+Each script runs by itself and contains one of several functions that directly solve the function. Thus, running a script should give you the answer directly. 
 
 The script are names as e_problemnumber_inc. The higher the inc, the finer my solution. 
 

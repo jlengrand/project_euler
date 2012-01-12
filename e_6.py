@@ -9,12 +9,26 @@
  natural numbers and the square of the sum.
 #---
 """ 
-def sum_squares():
+def diff_sum_squares(value):
     """
     Returns the difference between the sum of the squares of the first one 
     hundred natural numbers and the square of the sum.
     """
-    return 1
+    return squares_sum(value) - sum_squares(value)
+
+def sum_squares(value):
+    """
+    Returns the sum of the square of elements from 1 to value    
+    """
+    vals = range(1, value + 1)
+    return sum([pow(val, 2) for val in vals])    
+
+def squares_sum(value):
+    """
+    Returns the square of the sum of elements from 1 to value
+    """    
+    return pow(sum(range(1, value + 1)), 2)
 
 if __name__ == '__main__':
-    print "Answer : %d " % (sum_squares())
+    val = 100
+    print "Answer : %d " % (diff_sum_squares(val))

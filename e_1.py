@@ -1,8 +1,8 @@
 #!/usr/bin/env python 
 """
 #---
-jlengrand
-Created on : Wed Jan 11 14:32:18 CET 2012
+ Julien Lengrand-Lambert
+ Created on : Wed Jan 11 14:32:18 CET 2012
 
  DESCRIPTION : Soves problem 1 of Project Euler
  If we list all the natural numbers below 10 that are multiples of 3 or 5

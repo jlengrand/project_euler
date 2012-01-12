@@ -15,8 +15,24 @@ def divisible_by_all():
     """
     Returns the smallest number divisible by 1 to 20
     """
+    dividers = range(1, 20)[::-1] # in reverse order
+    max_div = dividers[0] + 1
+    ptr = 2
+    inc = 0
 
-    return 1
+    while 1:
+        val = max_div * ptr
+        # if divisible by all dividers
+        for divider in dividers:
+            if (val % divider != 0):
+                break
+            inc += 1
+
+        if inc == len(dividers):                
+            return val          
+        else :
+            inc = 0 
+        ptr += 1 
 
 if __name__ == '__main__':
     print "Answer : %d " % (divisible_by_all())

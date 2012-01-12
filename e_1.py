@@ -1,8 +1,7 @@
 #!/usr/bin/env python 
 """
 #---
- Advansee
- jlengrand
+jlengrand
 Created on : Wed Jan 11 14:32:18 CET 2012
 
  DESCRIPTION : Soves problem 1 of Project Euler

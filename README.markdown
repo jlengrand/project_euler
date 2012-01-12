@@ -8,7 +8,7 @@ I use Python for its simplicity. Simple Python code is very similar to paper sol
 
 Each script runs by itself and contains one of several functions that directly solve the function. Thus, running a script should give you the answer directly. 
 
-The script are names as e_problemnumber_inc. The higher the inc, the finer my solution. 
+The script are named as e_problemnumber_inc. The higher the inc, the finer my solution. 
 
 
 

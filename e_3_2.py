@@ -1,7 +1,6 @@
 #!/usr/bin/env python 
 """
 #---
- Advansee
  jlengrand
  Created on : Wed Jan 11 14:42:54 CET 2012
 

@@ -10,8 +10,6 @@ Each script runs by itself and contains one of several functions that directly s
 
 The script are named as e_problemnumber_inc. The higher the inc, the finer my solution. 
 
-Status : Problem 4 solved
-
 **WARNING : Spoil inside for those who want to solve problems by themselves :)**
 
 ## Contact

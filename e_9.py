@@ -14,11 +14,34 @@
  Find the product abc.
  ##---
 """
-def fun():
+def pythagorean_triplet(value):
     """
+    Returns the product of the Pythagoren triplet for which in addition 
+    a + b + c = value 
     """
+    pyth_list = pyth_possibilities(value)
+    for pyth in pyth_list:
+            if is_pyth_triplet(pyth):
+                return pyth[0] * pyth[1] * pyth[2]
+    return 0
 
-    return 1
+def pyth_possibilities(value):
+    """
+    Creates a list of all triplets wich sum is equal to value
+    FIXME = Is there a way to avoid redundancies? 
+    """
+    out_list = []
+    for j in range(1, value - 1):
+        for k in range(1, value - 1):
+            out_list.append([j, k, value - j - k])
+    return out_list            
+
+def is_pyth_triplet(suite):
+    """
+    Returns true if the suite contains a pythagorean triplet, false otherwise
+    """
+    return pow(suite[0], 2) + pow(suite[1], 2) == pow(suite[2], 2)
 
 if __name__ == '__main__':
-    print "Answer : %d" % (fun())
+    val = 1000
+    print "Answer : %d" % (pythagorean_triplet(val))

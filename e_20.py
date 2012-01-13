@@ -15,8 +15,21 @@ def sum_fact(value):
     """
     Returns the sum of digits in value!
     """
-    
-    return 1
+    return sum_digits(fact(value))
+
+def fact(value):
+    """
+    Returns value! 
+    """
+    if value == 0:
+        return 1
+    return value * fact(value - 1)                    
+
+def sum_digits(value):
+    """
+    Returns the value of the sum of the digits of value
+    """
+    return sum([int(el) for el in list(str(value))])
 
 if __name__ == '__main__':
-    print "Answer : %d" % (sum_fact)
+    print "Answer : %d" % (sum_fact(100))

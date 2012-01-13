@@ -12,16 +12,23 @@
 """ 
 def prime_list(value):
     """
-    Returns the vlst prime number
+    Returns the value of the 10001st prime number
     """
+    prime_list = [2] 
+    curr_val = 3
+    ptr = False
+    while( len(prime_list) < value):
+        for primes in prime_list:
+            if (curr_val % primes == 0):
+                ptr = True # multiple of at least one value
+        if not ptr:
+            prime_list.append(curr_val)
 
-    return 1
+        curr_val +=1
+        ptr = False
 
-
-
-
+    return prime_list[-1]
 
 if __name__ == '__main__':
     val = 10001
     print "Answer : %d " % (prime_list(val))
-

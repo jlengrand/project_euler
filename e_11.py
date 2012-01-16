@@ -7,7 +7,7 @@
  # DESCRIPTION : Solves problem 11 of Project Euler
  What is the greatest product of four adjacent numbers in any direction 
  (up, down, left, right, or diagonally) in the 20x20 grid? 
- (gris is saved into e_11.data
+ (gris is saved into e_11.data)
  ##---
 """
 from operator import mul
@@ -18,22 +18,35 @@ def great_prod_grid(filename, square_size):
     """
     data = load_data(filename)
     great_prod  = 0 
-    for j in range(square_size - 3):
-        for k in range(square_size - 3):
+    max_val = []
+    for j in range(square_size):
+        for k in range(square_size):
             # 3 possibilities here
             a = data[j][k:k + 4]
             b = []
             c = []
-            for l in range(4):
-                b.append(data[j + l][k]) 
-                c.append(data[j + l][k + l])
-            if j == square_size - 4:
-                if k == square_size - 4:
-                    print a, b, c                        
-            for val in [a, b, c]:
+            d= []
+            try:
+                for l in range(4):
+                    d.append(data[j - l][k - l]) 
+            except IndexError:
+                pass
+            try:
+                for l in range(4):
+                    b.append(data[j + l][k]) 
+            except IndexError:
+                pass
+            try:
+                for l in range(4):
+                    c.append(data[j + l][k - l])
+            except IndexError:
+                pass
+            for val in [a, b, c, d]:
                 prod = prod_list(val)
                 if prod > great_prod:            
                     great_prod = prod
+                    max_val = val
+    print max_val
     return great_prod
 
 def prod_list(data):

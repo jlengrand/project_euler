@@ -18,7 +18,7 @@ echo "#!/usr/bin/env python " >>$FILE
 #generating header
 echo -e '"""' >> $FILE
 echo -e " ##---" >> $FILE
-echo -e " # "$(whoami) >> $FILE
+echo -e " # Julien Lengrand-Lambert" >> $FILE
 echo -e " #Created on : "$(date)"\n #" >> $FILE
 echo -e " # DESCRIPTION : Solves problem $1 of Project Euler" >> $FILE
 echo -e ' ' >> $FILE

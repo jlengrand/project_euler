@@ -27,8 +27,42 @@ def longest_chain(max_value):
     Returns the starting number under max_value that produces the longest 
     chain given the sequence.
     """
+    max_len = 1
+    seed = 1
+    for val in range(1, max_value + 1):
+        curr_len = seq_len(val)
+        if curr_len > max_len:
+            max_len = curr_len
+            seed = val
+
+    return seed
+
+def seq_len(value):
+    """
+    Returns the sequence length for a given value
+    """
+    val = value
+    seq = [val]
     
-    return 1
+    while val != 1:
+        val = sequence(val)
+        seq.append(val)
+    return len(seq)
+
+def is_even(value):
+    """
+    Returns true if the given value is even, false otherwise
+    """
+    return (value % 2 == 0)
+
+def sequence(value):
+    """
+    Returns value / 2 if value is even, 3 * n + 1 otherwise.
+    """
+    if is_even(value):
+        return value / 2
+    else:
+        return 3 * value + 1        
 
 if __name__ == '__main__':
     print "Answer : %d" % (longest_chain(1000000))

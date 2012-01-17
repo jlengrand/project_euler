@@ -11,14 +11,45 @@
  What is the total of all the name scores in the file?
  ##---
 """
+import string
+
 def names_scores(filename):
     """
     Returns the total of all the name scores in filename
     """
     data = load_data(filename)
+    data.sort() # alphabetical
+    alpb = dict_alphabet()
+    score = 0
+    inc = 1
+    for name in data:
+        score += single_score(alpb, name, inc)
+        inc += 1
     
-    
-    return 1
+    return score
+
+def single_score(alpb, name, pos):
+    """
+    Returns a name score given its position, the name and the alphabet
+    """
+    score = 0
+    for j in range(len(name)):
+        score += alpb[name[j]]
+
+    return score * pos
+
+def dict_alphabet():
+    """
+    Returns a dict of the alphabet, with value for each letter.
+    """
+    alpb= dict()
+    letters = string.ascii_uppercase
+    inc = 1
+    for j in range(len(letters)): 
+        alpb[letters[j]] = inc
+        inc += 1
+
+    return alpb
 
 def load_data(filename):
     """
@@ -31,5 +62,4 @@ def load_data(filename):
     return data
 
 if __name__ == '__main__':
-    data = load_data("e_22.data")
-    #print "Answer : %d" % (names_scores("e_22.data"))
+    print "Answer : %d" % (names_scores("e_22.data"))

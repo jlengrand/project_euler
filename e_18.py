@@ -16,30 +16,56 @@
  Find the maximum total from top to bottom of the triangle saved in e_18.data
  ##---
 """
+import copy
 import itertools
 
 def longest_path(filename):
     """
     Returns the maximum total top from bottom of the triangle saved in filename
     """        
+    # data is the actual triangle
+    # rev_data the shortest path modification
+    # sort_val a list of unique values of data sorted by ascending order
+    # reverse_val the same values, reversed. Will be used to create the second 
+    # rectangle
+    
     data = load_triangle(filename)
 
-    reference = []
-    reference.extend(data)
-
+    # creating sort_val
     values = list(itertools.chain(*data))
     values.sort() # we loose non sorted variable
     sort_val = list(set(values))
 
+    # creating reverse_val
     reverse_val = []
     reverse_val.extend(sort_val)
     reverse_val.reverse()
 
-    print sort_val
-    print reverse_val
-    print reference
+    # creating rev_data
+    rev_data = copy.deepcopy(data) # deepcopy because nested list
+    for index, item in enumerate(rev_data):
+        for s_index, s_item in enumerate(item):
+            rev_data[index][s_index] = reverse_val[sort_val.index(s_item)]
+
+    if 0:    
+        print"###"
+        print sort_val
+        print reverse_val
+        print "###"
+        print data
+        print rev_data
+
+    # dikstra here!
 
     return 1
+
+def shortest_path(data):
+    """
+    Finds the shortest path to go through data
+    """
+    
+    return 1
+
 
 def load_triangle(filename):
     """

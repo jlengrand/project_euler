@@ -4,7 +4,7 @@
  # Julien Lengrand-Lambert
  #Created on : Mon Jan 16 15:34:46 CET 2012
  #
- # DESCRIPTION : Solves problem 18 of Project Euler
+ # DESCRIPTION : Solves problem 67 of Project Euler
  By starting at the top of the triangle below and moving to adjacent numbers on
  the row below, the maximum total from top to bottom is 23.
     3
@@ -13,7 +13,7 @@
  8 5 9 3
  That is, 3 + 7 + 4 + 9 = 23.
 
- Find the maximum total from top to bottom of the triangle saved in e_18.data
+ Find the maximum total from top to bottom of the triangle saved in e_67.data
  ##---
 """
 import copy

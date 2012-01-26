@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
  ##---
- # jlengrand
+ # Julien Lengrand-Lambert
  #Created on : Thu Jan 19 10:12:06 CET 2012
  #
  # DESCRIPTION : Solves problem 19 of Project Euler

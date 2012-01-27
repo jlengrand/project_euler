@@ -13,7 +13,28 @@
  
  What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
  ##---
-"""
+ """
+def lexi_perm(str, num):
+    """
+    Returns the numst lexicographic permutations of all values in str
+    """
+    # already sorted by all_permutations!
+    return int(all_permutations(str)[num - 1])
+ 
+def all_permutations(seq):
+    """permutate a sequence and return a list of the permutations"""
+    if not seq:
+        return [seq]  # is an empty sequence
+    else:
+        temp = []
+        for k in range(len(seq)):
+            part = seq[:k] + seq[k+1:]
+            #print k, part  # test
+            for m in all_permutations(part):
+                temp.append(seq[k:k+1] + m)
+                #print m, seq[k:k+1], temp  # test
+        return temp
+ 
 if __name__ == '__main__' :
-    print "Answer is : %d" %( 1)
+    print "Answer is : %d" %(lexi_perm("0123456789", 1000000))
     raw_input() # USed to keep Windows terminal open

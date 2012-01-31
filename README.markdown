@@ -10,6 +10,38 @@ Each script runs by itself and contains one of several functions that directly s
 
 The script are named as e_problemnumber_inc. The higher the inc, the finer my solution. 
 
+Here is a list of all already solved problems, with a one line explanation. 
+Should be used in order to help future reuse of code :)
+
+1 - Add all the natural numbers below one thousand that are multiples of 3 or 5.
+2 - By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+3 - Find the largest prime factor of a composite number.
+4 - Find the largest palindrome made from the product of two 3-digit numbers.
+5 - What is the smallest number divisible by each of the numbers 1 to 20?
+6 - What is the difference between the sum of the squares and the square of the sums?
+7 - Find the 10001st prime.
+8 - Discover the largest product of five consecutive digits in the 1000-digit number.
+9 - Find the only Pythagorean triplet, {a, b, c}, for which a + b + c = 1000. (a^2 + b^2 = c^2)
+10 - Calculate the sum of all the primes below two million.
+11 - What is the greatest product of four adjacent numbers on the same straight line in the 20 by 20 grid?
+12 - What is the value of the first triangle number to have over five hundred divisors?
+13 - Find the first ten digits of the sum of one-hundred 50-digit numbers.
+14 - Find the longest sequence using a starting number under one million.
+15 - Starting in the top left corner in a 20 by 20 grid, how many routes are there to the bottom right corner?
+16 - What is the sum of the digits of the number 2^1000?
+17 - How many letters would be needed to write all the numbers in words from 1 to 1000?
+18 - Find the maximum sum travelling from the top of the triangle to the base.
+19 - How many Sundays fell on the first of the month during the twentieth century?
+20 - Find the sum of digits in 100!
+21 - Evaluate the sum of all amicable pairs under 10000. (d(a) = b, d(b) = a)
+22 - What is the total of all the name scores in the file of first names?
+23 - Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
+24 - What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
+25 - What is the first term in the Fibonacci sequence to contain 1000 digits?
+48 - Find the last ten digits of 1^1 + 2^2 + ... + 1000^1000.
+67 - Using an efficient algorithm find the maximal sum in the triangle?
+
+
 **WARNING : Spoil inside for those who want to solve problems by themselves :)**
 
 ## Contact

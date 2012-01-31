@@ -21,6 +21,19 @@
  Find the value of d  1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
  ##---
  """
+ 
+def number2str(value):
+    """
+    Returns decimals of a number as a string
+    """
+    dec_str = "%d" %(value)
+    return dec_str[:]
+
+def check_redondance(string):
+    """
+    Returns True or False depending if string contains a redondant sequence or not.
+    """
+    return True
+    
 if __name__ == '__main__' :
-    print "Answer is : %d" %(l1)
     raw_input() # USed to keep Windows terminal open

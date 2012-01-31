@@ -29,12 +29,13 @@ def all_permutations(seq):
         temp = []
         for k in range(len(seq)):
             part = seq[:k] + seq[k+1:]
-            #print k, part  # test
+            print "k : %s" % (k)
+            print "part : %s" %(part) 
             for m in all_permutations(part):
                 temp.append(seq[k:k+1] + m)
-                #print m, seq[k:k+1], temp  # test
         return temp
  
 if __name__ == '__main__' :
-    print "Answer is : %d" %(lexi_perm("0123456789", 1000000))
+    lexi_perm("012", 1)
+    #print "Answer is : %d" %(lexi_perm("0123456789", 1000000))
     raw_input() # USed to keep Windows terminal open

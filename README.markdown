@@ -39,13 +39,14 @@ Should be used in order to help future reuse of code :)
 24 - What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
 25 - What is the first term in the Fibonacci sequence to contain 1000 digits?
 27 - Find a quadratic formula that produces the maximum number of primes for consecutive values of n.
+36 - Find the sum of all numbers less than one million, which are palindromic in base 10 and base 2.
 48 - Find the last ten digits of 1^1 + 2^2 + ... + 1000^1000.
 67 - Using an efficient algorithm find the maximal sum in the triangle?
 
 **In progress: **
 
 26 - Find the value of d < 1000 for which 1/d contains the longest recurring cycle.
-36 - Find the sum of all numbers less than one million, which are palindromic in base 10 and base 2.
+35 - How many circular primes are there below one million?
 
 **WARNING : Spoil inside for those who want to solve problems by themselves :)**
 

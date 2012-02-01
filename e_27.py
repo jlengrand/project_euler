@@ -45,37 +45,32 @@ def prime_series(a_range, b_range):
     """
     Returns the product of a and b for the quad_fun that produces the max number of primes; 
     a_range, b_range being the ranges for a and b
-    """
-    prints = len(a_range) * len(b_range)
-    a_print = 0
-    b_print = 0
-    
+    """    
     max = 0
     max_prod = 0
+    
+    a_curr = 0
     for a in a_range:
-        a_print += 1
+        a_curr += 1
+        print "%d/%d" %(a_curr, len(a_range))
         for b in b_range:
-            b_print += 1
-        
-            # status message 
-            curr_print = (a_print - 1) * len(b_range)   + b_print % (len(b_range) )
-            print "%d/%d" % (curr_print, prints)
             
             n = 0
             value = quad_fun(a, b, n)
-            while is_prime(value):
+            while is_prime(abs(value)):
                 n += 1
                 value = quad_fun(a, b, n)
 
             # checking if current serie if the best we got : 
             if n > max:
                 max = n
-                max_prod = abs(a) * abs(b)
+                max_prod = a * b
                 
     return max_prod
     
 if __name__ == '__main__' :
-    a_range = range(-1000, 1001)
-    b_range = range(-1000, 1001)
+    a_range = range(-999, 1000)
+    b_range = range(-999, 1000)
+    
     print "Answer is : %d"  % (prime_series(a_range, b_range))
     raw_input()

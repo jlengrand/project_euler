@@ -29,8 +29,6 @@ def all_permutations(seq):
         temp = []
         for k in range(len(seq)):
             part = seq[:k] + seq[k+1:]
-            print "k : %s" % (k)
-            print "part : %s" %(part) 
             for m in all_permutations(part):
                 temp.append(seq[k:k+1] + m)
         return temp

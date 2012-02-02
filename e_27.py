@@ -27,7 +27,7 @@ def is_prime(value):
     Returns True or False depending whether value is prime or not. 
     """
     start = 2
-    while (start < value / 2):
+    while (start <= value / 2):
         if value % start == 0 :
             return False
         else : 

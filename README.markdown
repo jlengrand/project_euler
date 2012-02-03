@@ -15,11 +15,11 @@ Should be used in order to help future reuse of code :)
 
 1 - Add all the natural numbers below one thousand that are multiples of 3 or 5. - 0.011
 2 - By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms. - 0.011
-3 - Find the largest prime factor of a composite number. - too long - 
+3 - Find the largest prime factor of a composite number. - too long
 4 - Find the largest palindrome made from the product of two 3-digit numbers. - 0.790
 5 - What is the smallest number divisible by each of the numbers 1 to 20? - 4.102
 6 - What is the difference between the sum of the squares and the square of the sums? - 0.013
-7 - Find the 10001st prime. - too long - 
+7 - Find the 10001st prime. - too long
 8 - Discover the largest product of five consecutive digits in the 1000-digit number. - 0.045
 9 - Find the only Pythagorean triplet, {a, b, c}, for which a + b + c = 1000. (a^2 + b^2 = c^2) - 1.500
 10 - Calculate the sum of all the primes below two million. - too long

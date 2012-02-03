@@ -41,4 +41,3 @@ def sum_palindroms(max):
     
 if __name__ == '__main__' :
     print "Answer is : %d"  % (sum_palindroms(1000000))
-    raw_input()

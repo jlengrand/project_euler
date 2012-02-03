@@ -159,4 +159,3 @@ if __name__ == '__main__' :
     start_date = Date(1901, 1, 1)
     end_date = Date(2000, 12, 31)
     print "Answer is : %d" %(days_in_period("sunday", 1, start_date, end_date))
-    raw_input() # USed to keep Windows terminal open

@@ -34,6 +34,4 @@ def all_permutations(seq):
         return temp
  
 if __name__ == '__main__' :
-    lexi_perm("012", 1)
-    #print "Answer is : %d" %(lexi_perm("0123456789", 1000000))
-    raw_input() # USed to keep Windows terminal open
+    print "Answer is : %d" %(lexi_perm("0123456789", 1000000))

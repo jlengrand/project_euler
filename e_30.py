@@ -16,14 +16,47 @@ The sum of these numbers is 1634 + 8208 + 9474 = 19316.
 
 Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
 '''
-
-
-def largest():
+def find_limit(power):
     """
-    Returns
+    Returns the max number of digits we have to loop through to find the solution, for a given power
     """
+    nb_digits = 2
+    max_num = 9**power * nb_digits 
+    
+    while len(str(max_num)) >= nb_digits:
+        nb_digits += 1
+        
+    return nb_digits - 1
+    
+def digsum(num, power):
+    """
+    Returns the sum of power of digits of num
+    ex : digsum(123, 4) = 1**4 + 2**4 + 3**4
+    """
+    val = 0
+    for el in str(num):
+        val += int(el) ** power
+    
+    return val
+    
+def sum_power(power):
+    """
+    Finds the sum of all the numbers that can be written as the sum of power powers of their digits.
+    """
+    max_dig = find_limit(power)
+    max_val = 9**power * max_dig
+    print "Max dig is : %d" %(max_dig)
+    sump = 0
+    
+    cpt = 2
+    while cpt <= max_val:        
+        if cpt ==  digsum(cpt, power):
+            sump += cpt
+        
+        cpt +=1
 
-    return 1
+    return sump
 
 if __name__ == '__main__':
-    print "Answer : %d " % (largest())
+    # The major problem in there is to find the upper limit.  
+    print "Answer : %d " % (sum_power(5))

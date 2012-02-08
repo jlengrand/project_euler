@@ -54,6 +54,7 @@ Should be used in order to help future reuse of code :)
 26 - Find the value of d < 1000 for which 1/d contains the longest recurring cycle. <br />
 28 - What is the sum of both diagonals in a 1001 by 1001 spiral? <br />
 35 - How many circular primes are there below one million? <br />
+39 - If p is the perimeter of a right angle triangle, {a, b, c}, which value, for p <= 1000, has the most solutions? <br />
 
 **WARNING : Spoil inside for those who want to solve problems by themselves :)**
 

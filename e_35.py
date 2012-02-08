@@ -11,7 +11,8 @@
  How many circular primes are there below one million?
  ##---
  """
- 
+import pickle
+
 def all_permutations(seq):
     """permutate a sequence and return a list of the permutations"""
     if not seq:
@@ -52,20 +53,23 @@ def prime_list(max_val):
         
     return plist
  
-def perm_primes(max_val):
+def perm_primes_old(max_val):
     """
     Returns the number of circular primes below max_val
     """
     circulars = 0
     circl = []
     
+    # to avoid calculating primes
+    # plist = pickle.load(open("primes_list.dup", "rb"))
+    # print plist
     plist = prime_list(max_val)
     print "###"
     # stuff here
     cpt = 0
     for prime in plist:
         cpt += 1
-        print "%d/%d" % ( cpt, len(list))
+        print "%d/%d" % ( cpt, len(plist))
         print circulars, circl
         perms = all_permutations(str(prime)) # finds all permutations
         
@@ -82,8 +86,47 @@ def perm_primes(max_val):
         
     return circulars, circl
  
+def perm_primes(max_val):
+    """
+    Returns the number of circular primes below max_val
+    """
+    circulars = 0
+    circl = []
+    
+    # to avoid calculating primes
+    plist = pickle.load(open("primes_list.dup", "rb"))
+    #plist = prime_list(max_val)
+    checks_list = [1] * len(plist) # all primes to be tested
+    
+    for ii in range(len(plist)):
+        if (ii % 99 == 0):
+            print "%d/%d" % ( ii + 1, len(plist))
+
+        if checks_list[ii]: # if prime still to be checked
+            prime = plist[ii]
+            perms = all_permutations(str(prime)) # finds all permutations
+
+            # counts how many permutations are in prime list given one prime
+            p_cpt = 0
+            for perm in perms:
+                if int(perm) in plist:
+                    p_cpt += 1
+
+            # if prime is circular
+            if p_cpt == len(perms):                  
+                # updating checks_list
+                for perm in perms:
+                    if not(int(perm) in circl): # avoiding duplicates
+                        circulars += 1
+                        circl.append(int(perm))
+                    checks_list[plist.index(int(perm))] = 0
+                    
+            else:
+                checks_list[ii] = 0
+    
+    return circulars, circl
+ 
 if __name__ == '__main__' :
     answer, plist = perm_primes(1000000)
     print "Answer is : %d"  % (answer)
     print plist
-    raw_input()

@@ -1,4 +1,4 @@
-#My solutions to Project Euler 's website
+ #My solutions to Project Euler 's website
 
 [Project Euler](http://projecteuler.net/) is a website containing lots of problems aiming at being solved.
 I play around with them in order to sharpen my algorithm skills. 
@@ -44,6 +44,7 @@ Should be used in order to help future reuse of code :)
 30 - Find the sum of all the numbers that can be written as the sum of fifth powers of their digits. - < 3 sec <br />
 34 - Find the sum of all numbers which are equal to the sum of the factorial of their digits. - 30 sec  <br />
 36 - Find the sum of all numbers less than one million, which are palindromic in base 10 and base 2. - 0.933 <br />
+39 - If p is the perimeter of a right angle triangle, {a, b, c}, which value, for p <= 1000, has the most solutions? - 1min<br />
 42 - Using words.txt, a 16K text file containing nearly two-thousand common English words, how many are triangle words? - < 1 sec <br />
 45 - Find the next triangle number that is also pentagonal and hexagonal. - < 1 sec <br /> 
 48 - Find the last ten digits of 1^1 + 2^2 + ... + 1000^1000. - 0.053 <br />
@@ -53,8 +54,9 @@ Should be used in order to help future reuse of code :)
 **In progress: **
 
 26 - Find the value of d < 1000 for which 1/d contains the longest recurring cycle. <br />
+31 - Investigating combinations of English currency denominations. <br />
 35 - How many circular primes are there below one million? <br />
-39 - If p is the perimeter of a right angle triangle, {a, b, c}, which value, for p <= 1000, has the most solutions? <br />
+53 - How many values of C(n,r), for 1 <= n <= 100, exceed one-million? <br />
 
 **WARNING : Spoil inside for those who want to solve problems by themselves :)**
 

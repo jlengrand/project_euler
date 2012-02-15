@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Used to easily profile a solution to Project Euler
+
+PROBLEM=$1
+
+python -m cProfile -s time $PROBLEM

@@ -33,8 +33,6 @@ def even_sum_fib(max_value):
         
     return fib_sum
     
-    
-    
 if __name__ == '__main__':
     val = 4000000
     print "Answer : %d " % (even_sum_fib(val))                        

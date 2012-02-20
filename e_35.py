@@ -52,39 +52,7 @@ def prime_list(max_val):
         cur += 1
         
     return plist
- 
-def perm_primes_old(max_val):
-    """
-    Returns the number of circular primes below max_val
-    """
-    circulars = 0
-    circl = []
-    
-    # to avoid calculating primes
-    # plist = pickle.load(open("primes_list.dup", "rb"))
-    # print plist
-    plist = prime_list(max_val)
-    print "###"
-    # stuff here
-    cpt = 0
-    for prime in plist:
-        cpt += 1
-        print "%d/%d" % ( cpt, len(plist))
-        print circulars, circl
-        perms = all_permutations(str(prime)) # finds all permutations
-        
-        # counts how many permutations are in prime list given one prime
-        p_cpt = 0
-        for perm in perms:
-            if int(perm) in plist:
-                p_cpt += 1
 
-        # if prime is circular
-        if p_cpt == len(perms):
-            circulars += 1 
-            circl.append(prime)
-        
-    return circulars, circl
  
 def perm_primes(max_val):
     """
@@ -129,4 +97,3 @@ def perm_primes(max_val):
 if __name__ == '__main__' :
     answer, plist = perm_primes(1000000)
     print "Answer is : %d"  % (answer)
-    print plist

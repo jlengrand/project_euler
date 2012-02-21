@@ -9,6 +9,8 @@
  What is the largest prime factor of the number 600851475143 ?
 #---
 """ 
+import timeit
+
 def largest_prime_factor(value):
     """
     Returns the largest prime factor of value
@@ -25,10 +27,10 @@ def largest_prime_factor(value):
         while (rest % curr_prime == 0):
             rest = rest / curr_prime
         curr_prime += 1
-        if (curr_prime % 10000 == 0):
-            print "%d/%d" % (curr_prime, value)
     return max(primes)
 
 if __name__ == '__main__':
     val = 600851475143 
-    print "Answer : %d " % (largest_prime_factor(val))
+    #print "Answer : %d " % ()
+    t2 = timeit.Timer("largest_prime_factor(%d)" % (val), "from __main__ import largest_prime_factor")
+    print t2.timeit(1)

@@ -9,6 +9,7 @@
  that the 6th prime is 13.
  What is the 10 001st prime number? 
 #---
+"""
 """ 
 import utils.primes as prime
 
@@ -16,3 +17,4 @@ print prime.prime_list
 print prime.prime(10000)
 print prime.prime_list
 print prime.prime(10000)
+"""

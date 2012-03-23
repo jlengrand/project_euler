@@ -66,4 +66,6 @@ Should be used in order to help future reuse of code :)
 I would enjoy having feedback if you try to solve euler's problems too :).
 Feel free to mail me for any comment or request. 
 
-You can contact me at julien@lengrand.fr, or on my [current website](http://www.lengrand.fr)
+You can contact me at julien at lengrand dot fr, or on my [current website](http://www.lengrand.fr)
+
+Last update : 3/23/2012

@@ -13,8 +13,25 @@
  """
 import pickle
 
+def shift(seq, n):
+    """
+    Shifts a sequence by n rotations
+    """
+    seq = str(seq)
+    return int(seq[n:]+seq[:n])
+
+def all_rotations(seq):
+    """
+    Returns a list of all possible rotations of a number 
+    """
+    out = []
+    for n in range(len(str(seq))):
+        out.append(int(shift(str(seq), n)))
+
+    return out
+
 def all_permutations(seq):
-    """permutate a sequence and return a list of the permutations"""
+    """permutates a sequence and returns a list of the permutations"""
     if not seq:
         return [seq]  # is an empty sequence
     else:
@@ -53,47 +70,75 @@ def prime_list(max_val):
         
     return plist
 
+def contains_even(val):
+    """
+    Returns True if val contains an even number (ex : 998)
+    """
+    return ((str(2) in str(val)) or (str(4) in str(val))  or (str(6) in str(val)) or (str(8) in str(val)))
+
+def divisible_by_5(val):
+    """
+    Returns True if any circular permutation of val is divisible by  (ex : 907)
+    """    
+    return ((str(5) in str(val)) or (str(0) in str(val)))
+    
+def divisible_by_3(val):
+    """
+    Returns True if any circular permutation of val is divisible by 3 (ex : 12)
+    """    
+    temp = sum([int(p) for p in str(val)])
+    if len(str(temp)) > 1:
+        divisible_by_3(temp)
+    else:
+        return ((temp % 3) == 0)
+
+def check_easy_out(plist):
+    """
+    Returns the number of circular primes below max_val
+    
+    TODO : offer cleaner method
+    """
+    pred = list(plist)
+    for p in plist:
+        if p > 11: # my filter does not work for values under 10
+            # ugly method
+            if (contains_even(p) or divisible_by_5(p)): # no prime divisible by 3 . . . 
+                pred.remove(p)    
+    return pred
  
 def perm_primes(max_val):
     """
     Returns the number of circular primes below max_val
     """
-    circulars = 0
-    circl = []
+    plist = prime_list(max_val)
+    #plist = pickle.load(open("primes_list.dup", "rb"))
+    p_reduced = check_easy_out(plist) 
     
-    # to avoid calculating primes
-    plist = pickle.load(open("primes_list.dup", "rb"))
-    #plist = prime_list(max_val)
-    checks_list = [1] * len(plist) # all primes to be tested
+    p_out = []
     
-    for ii in range(len(plist)):
-        if (ii % 99 == 0):
-            print "%d/%d" % ( ii + 1, len(plist))
-
-        if checks_list[ii]: # if prime still to be checked
-            prime = plist[ii]
-            perms = all_permutations(str(prime)) # finds all permutations
-
-            # counts how many permutations are in prime list given one prime
-            p_cpt = 0
-            for perm in perms:
-                if int(perm) in plist:
-                    p_cpt += 1
-
-            # if prime is circular
-            if p_cpt == len(perms):                  
-                # updating checks_list
-                for perm in perms:
-                    if not(int(perm) in circl): # avoiding duplicates
-                        circulars += 1
-                        circl.append(int(perm))
-                    checks_list[plist.index(int(perm))] = 0
-                    
-            else:
-                checks_list[ii] = 0
+    print len(plist)
+    print len(p_reduced)
     
-    return circulars, circl
+    print p_reduced
+    
+    for p in p_reduced:
+        perms = all_rotations(p)
+        perms = list(set(perms)) # removes duplicates
+        perms = [int(p) for p in perms]
+
+        circl = 0
+        for pp in perms:
+            if pp in p_reduced: # in list of primes
+                circl += 1
+                
+        if circl == len(perms):
+            p_out = p_out + perms
+            
+        circl = 0
+           
+    p_out = list(set(p_out)) 
+    return len(p_out)
  
 if __name__ == '__main__' :
-    answer, plist = perm_primes(1000000)
-    print "Answer is : %d"  % (answer)
+    answer = perm_primes(1000000)
+    print "Answer is : %d"  % (answer)   

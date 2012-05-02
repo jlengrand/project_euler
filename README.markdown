@@ -48,6 +48,7 @@ Should be used in order to help future reuse of code :)
 36 - Find the sum of all numbers less than one million, which are palindromic in base 10 and base 2. - 0.933 <br />
 37 - Find the sum of all eleven primes that are both truncatable from left to right and right to left. < 1 min <br />
 39 - If p is the perimeter of a right angle triangle, {a, b, c}, which value, for p <= 1000, has the most solutions? - 1min<br />
+41 - What is the largest n-digit pandigital prime that exists? < 5 min <br />
 42 - Using words.txt, a 16K text file containing nearly two-thousand common English words, how many are triangle words? - < 1 sec <br />
 45 - Find the next triangle number that is also pentagonal and hexagonal. - < 1 sec <br /> 
 48 - Find the last ten digits of 1^1 + 2^2 + ... + 1000^1000. - 0.053 <br />
@@ -60,7 +61,6 @@ Should be used in order to help future reuse of code :)
 26 - Find the value of d < 1000 for which 1/d contains the longest recurring cycle. <br />
 33 - Discover all the fractions with an unorthodox cancelling method. <br />
 38 - What is the largest 1 to 9 pandigital that can be formed by multiplying a fixed number by 1, 2, 3, ... ? <br />
-41 - What is the largest n-digit pandigital prime that exists? <br />
 97 - Find the last ten digits of the non-Mersenne prime: 28433 × 2^7830457 + 1.
 
 **WARNING : Spoil inside for those who want to solve problems by themselves :)**

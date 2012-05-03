@@ -47,6 +47,7 @@ Should be used in order to help future reuse of code :)
 35 - How many circular primes are there below one million? <br />
 36 - Find the sum of all numbers less than one million, which are palindromic in base 10 and base 2. - 0.933 <br />
 37 - Find the sum of all eleven primes that are both truncatable from left to right and right to left. < 1 min <br />
+38 - What is the largest 1 to 9 pandigital that can be formed by multiplying a fixed number by 1, 2, 3, ... ? < 1 sec <br />
 39 - If p is the perimeter of a right angle triangle, {a, b, c}, which value, for p <= 1000, has the most solutions? - 1min<br />
 41 - What is the largest n-digit pandigital prime that exists? < 5 min <br />
 42 - Using words.txt, a 16K text file containing nearly two-thousand common English words, how many are triangle words? - < 1 sec <br />
@@ -60,8 +61,10 @@ Should be used in order to help future reuse of code :)
 
 26 - Find the value of d < 1000 for which 1/d contains the longest recurring cycle. <br />
 33 - Discover all the fractions with an unorthodox cancelling method. <br />
-38 - What is the largest 1 to 9 pandigital that can be formed by multiplying a fixed number by 1, 2, 3, ... ? <br />
-97 - Find the last ten digits of the non-Mersenne prime: 28433 × 2^7830457 + 1.
+43 - Find the sum of all pandigital numbers with an unusual sub-string divisibility property. <br />
+46 - What is the smallest odd composite that cannot be written as the sum of a prime and twice a square? <br />
+47 - Find the first four consecutive integers to have four distinct primes factors. <br />
+97 - Find the last ten digits of the non-Mersenne prime: 28433 × 2^7830457 + 1. <br />
 
 **WARNING : Spoil inside for those who want to solve problems by themselves :)**
 

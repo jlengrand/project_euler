@@ -13,4 +13,5 @@ If the product of these four fractions is given in its lowest common terms, find
 ''' 
 
 if __name__ == '__main__':
+    print 1
     #print "Answer : %d " % (last_ten())

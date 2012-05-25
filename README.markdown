@@ -53,6 +53,7 @@ Should be used in order to help future reuse of code :)
 41 - What is the largest n-digit pandigital prime that exists? < 5 min <br />
 42 - Using words.txt, a 16K text file containing nearly two-thousand common English words, how many are triangle words? - < 1 sec <br />
 45 - Find the next triangle number that is also pentagonal and hexagonal. - < 1 sec <br /> 
+46 - What is the smallest odd composite that cannot be written as the sum of a prime and twice a square? - < 6 sec <br />
 48 - Find the last ten digits of 1^1 + 2^2 + ... + 1000^1000. - 0.053 <br />
 52 - Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain the same digits. - 2min <br />
 53 - How many values of C(n,r), for 1 <= n <= 100, exceed one-million? - < 1 sec <br />
@@ -62,7 +63,6 @@ Should be used in order to help future reuse of code :)
 
 26 - Find the value of d < 1000 for which 1/d contains the longest recurring cycle. <br />
 43 - Find the sum of all pandigital numbers with an unusual sub-string divisibility property. <br />
-46 - What is the smallest odd composite that cannot be written as the sum of a prime and twice a square? <br />
 47 - Find the first four consecutive integers to have four distinct primes factors. <br />
 97 - Find the last ten digits of the non-Mersenne prime: 28433 × 2^7830457 + 1. <br />
 

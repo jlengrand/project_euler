@@ -18,22 +18,45 @@
  1/10	= 	0.1
  Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be seen that 1/7 has a 6-digit recurring cycle.
 
- Find the value of d  1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
+ Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
  ##---
  """
- 
-def number2str(value):
-    """
-    Returns decimals of a number as a string
-    """
-    dec_str = "%d" %(value)
-    return dec_str[:]
+import decimal as d
+import re
 
-def check_redondance(string):
+def repetitions(s):
+   r = re.compile(r"(.+?)\1+")
+   for match in r.finditer(s):
+       yield (match.group(1), len(match.group(0))/len(match.group(1)))
+
+def getDecimal(nume, deno):
     """
-    Returns True or False depending if string contains a redondant sequence or not.
+    Returns decimals of nume / deno as a string
     """
-    return True
-    
+    return str(d.Decimal(nume) / d.Decimal(deno))[2:] # to remoe the 0. part
+
+def longest_recurring(max_val):
+    """
+    Returns the number between 1/2 and 1/max val having the longest recurring cycle
+    in its decimal fraction part
+    """
+    fin_val = 0
+    longest = 0
+    for val in range(2, max_val + 1):
+        myFrac = getDecimal(1, val)
+        myReps = list(repetitions(myFrac))
+        try:
+            temp = max(myReps, key=lambda x: len(x[0]))
+            big = len(temp[0])
+            if big > longest:
+                longest = big
+                fin_val = val
+        except ValueError:
+            pass
+
+    return fin_val, longest
+
 if __name__ == '__main__' :
-    raw_input() # USed to keep Windows terminal open
+    d.getcontext().prec = 2000
+    res = longest_recurring(1000)
+    print "Number with longest recurring cycle is : %d" % (res[0])

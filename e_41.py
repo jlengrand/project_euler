@@ -1,4 +1,4 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
 '''
 Created on 10 feb. 2012
 
@@ -8,18 +8,18 @@ DESCRIPTION: Solves problem 41 of Project Euler
 We shall say that an n-digit number is pandigital if it makes use of all the digits 1 to n exactly once. For example, 2143 is a 4-digit pandigital and is also prime.
 
 What is the largest n-digit pandigital prime that exists?
-''' 
+'''
 
 val = 123456789 # all numbers to create the biggest pandigital number
 def is_prime(value):
     """
-    Returns True or False depending whether value is prime or not. 
+    Returns True or False depending whether value is prime or not.
     """
     start = 2
     while (start <= value / 2):
         if value % start == 0 :
             return False
-        else : 
+        else :
             start += 1
     return True
 
@@ -45,13 +45,13 @@ def divisible_by_2(val):
 def divisible_by_5(val):
     """
     Returns True if any circular permutation of val is divisible by  (ex : 907)
-    """    
+    """
     return (str(5) == str(val)[-1])
-    
+
 def divisible_by_3(val):
     """
     Returns True if any circular permutation of val is divisible by 3 (ex : 12)
-    """    
+    """
     temp = sum([int(p) for p in str(val)])
     if len(str(temp)) > 1:
         divisible_by_3(temp)
@@ -61,14 +61,14 @@ def divisible_by_3(val):
 def check_easy_out(pelist):
     """
     Returns the number of circular primes below max_val
-    
+
     TODO : do this while creating all the permutations !
     """
     pred = list(pelist)
     for p in pelist:
         if p > 11: # my filter does not work for values under 10
-            if (divisible_by_2(p) or divisible_by_5(p) or divisible_by_3(p)): 
-                pred.remove(p)    
+            if (divisible_by_2(p) or divisible_by_5(p) or divisible_by_3(p)):
+                pred.remove(p)
     return pred
 
 def biggest_pandigital():
@@ -81,10 +81,10 @@ def biggest_pandigital():
         perms = [ int(p) for p in all_permutations(root)]
         perms = check_easy_out(perms)
         perms.sort(reverse=True)
-        for p in perms : 
+        for p in perms :
             if is_prime(p):
                 return p
-        
+
     return -1 # problem
 if __name__ == '__main__':
     print "Answer : %d " % (biggest_pandigital())

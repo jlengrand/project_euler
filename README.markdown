@@ -56,6 +56,7 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 37 - Find the sum of all eleven primes that are both truncatable from left to right and right to left. < 1 min <br />
 38 - What is the largest 1 to 9 pandigital that can be formed by multiplying a fixed number by 1, 2, 3, ... ? < 1 sec <br />
 39 - If p is the perimeter of a right angle triangle, {a, b, c}, which value, for p <= 1000, has the most solutions? - 1min<br />
+40 - Finding the nth digit of the fractional part of the irrational number. > 2 sec <br />
 41 - What is the largest n-digit pandigital prime that exists? < 5 min <br />
 42 - Using words.txt, a 16K text file containing nearly two-thousand common English words, how many are triangle words? - < 1 sec <br />
 45 - Find the next triangle number that is also pentagonal and hexagonal. - < 1 sec <br />
@@ -68,7 +69,6 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 
 ## In progress:
 
-40 - Finding the nth digit of the fractional part of the irrational number. <br />
 43 - Find the sum of all pandigital numbers with an unusual sub-string divisibility property. <br />
 47 - Find the first four consecutive integers to have four distinct primes factors. <br />
 97 - Find the last ten digits of the non-Mersenne prime: 28433 � 2^7830457 + 1. <br />

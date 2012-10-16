@@ -12,7 +12,7 @@ The scripts are named as e_problemnumber_inc. The higher the inc, the finer the 
 Here is a list of all already solved problems, with a one line explanation.
 Should be used in order to help future reuse of code :)
 
-**Note :** I try to get my solutions within a one minute timeframe. What I want here is to solve problems, not get them running as fast as possible. 
+**Note :** I try to get my solutions within a one minute timeframe. What I want here is to solve problems, not get them running as fast as possible.
 So you may find some of the code here quite ugly. And this is the case :). Why optimize something that completely  fits its purpose ? ;)
 
 
@@ -51,7 +51,7 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 31 - Investigating combinations of English currency denominations. - < 1 sec <br />
 33 - Discover all the fractions with an unorthodox cancelling method. < 1 sec <br />
 34 - Find the sum of all numbers which are equal to the sum of the factorial of their digits. - 30 sec - 16 sec  <br />
-35 - How many circular primes are there below one million? - **too long** <br /> 
+35 - How many circular primes are there below one million? - **too long** <br />
 36 - Find the sum of all numbers less than one million, which are palindromic in base 10 and base 2. - 0.933 <br />
 37 - Find the sum of all eleven primes that are both truncatable from left to right and right to left. < 1 min <br />
 38 - What is the largest 1 to 9 pandigital that can be formed by multiplying a fixed number by 1, 2, 3, ... ? < 1 sec <br />
@@ -67,8 +67,10 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 
 ## In progress:
 
+40 - Finding the nth digit of the fractional part of the irrational number. <br />
 43 - Find the sum of all pandigital numbers with an unusual sub-string divisibility property. <br />
 47 - Find the first four consecutive integers to have four distinct primes factors. <br />
+56 - Considering natural numbers of the form, a^b, finding the maximum digital sum. <br />
 97 - Find the last ten digits of the non-Mersenne prime: 28433 � 2^7830457 + 1. <br />
 
 ## Contact

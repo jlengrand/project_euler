@@ -19,9 +19,7 @@ def sum_numbers(val):
     """
     Given an value, returns the sum of all its numbers
     """
-    temp = str(val)
-    res = sum([int(i) for i in temp])
-    return res
+    return sum(map(int,str(val)))
 
 
 def sum_pow(max_a, max_b=None):

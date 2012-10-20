@@ -59,6 +59,7 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 40 - Finding the nth digit of the fractional part of the irrational number. > 2 sec <br />
 41 - What is the largest n-digit pandigital prime that exists? < 5 min <br />
 42 - Using words.txt, a 16K text file containing nearly two-thousand common English words, how many are triangle words? - < 1 sec <br />
+43 - Find the sum of all pandigital numbers with an unusual sub-string +divisibility property. - 28sec <br />
 45 - Find the next triangle number that is also pentagonal and hexagonal. - < 1 sec <br />
 46 - What is the smallest odd composite that cannot be written as the sum of a prime and twice a square? - < 6 sec <br />
 48 - Find the last ten digits of 1^1 + 2^2 + ... + 1000^1000. - 0.053 <br />
@@ -70,7 +71,6 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 
 ## In progress:
 
-43 - Find the sum of all pandigital numbers with an unusual sub-string divisibility property. <br />
 47 - Find the first four consecutive integers to have four distinct primes factors. <br />
 55 - How many Lychrel numbers are there below ten-thousand? <br />
 97 - Find the last ten digits of the non-Mersenne prime: 28433 � 2^7830457 + 1. <br />

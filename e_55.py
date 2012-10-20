@@ -42,5 +42,31 @@ the theoretical nature of Lychrel numbers.
  """
 
 
+def reverse(num):
+    """
+    Returns the palidromic number of num
+    """
+    str_num = str(num)
+    rev = ''
+    for i in range(len(str_num)):
+        rev += str_num[len(str_num) - i - 1]
+
+    return int(rev)
+
+
+def count_lychrel(max_num, max_it=50):
+    """
+    Returns the number of lychrel numbers smaller than max_num
+    The maximum iteration number defines how many times the process is repeated
+    before considreing a number to be a lychrel number
+    """
+    lychrels = []
+    for i in xrange(1, max_num + 1):
+        cur = i
+
+    return 1
+
+
 if __name__ == '__main__':
-    print "Answer : %d " % (1)
+    print palindrome(12345)
+    #print "Answer : %d " % (count_lychrel(10000))

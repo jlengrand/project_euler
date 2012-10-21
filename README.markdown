@@ -60,6 +60,7 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 41 - What is the largest n-digit pandigital prime that exists? < 5 min <br />
 42 - Using words.txt, a 16K text file containing nearly two-thousand common English words, how many are triangle words? - < 1 sec <br />
 43 - Find the sum of all pandigital numbers with an unusual sub-string +divisibility property. - 28sec <br />
+44 - Find the smallest pair of pentagonal numbers whose sum and difference is pentagonal. **~= 19 min** <br />
 45 - Find the next triangle number that is also pentagonal and hexagonal. - < 1 sec <br />
 46 - What is the smallest odd composite that cannot be written as the sum of a prime and twice a square? - < 6 sec <br />
 48 - Find the last ten digits of 1^1 + 2^2 + ... + 1000^1000. - 0.053 <br />
@@ -82,4 +83,4 @@ Feel free to mail me for any comment or request.
 
 You can contact me at julien at lengrand dot fr, or on my [current website](http://www.lengrand.fr)
 
-Last update : 16/10/2012
+Last update : 21/10/2012

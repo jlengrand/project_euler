@@ -66,13 +66,13 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 50 - Which prime, below one-million, can be written as the sum of the most consecutive primes? - **~= 1 hour** <br />
 52 - Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain the same digits. - 2min <br />
 53 - How many values of C(n,r), for 1 <= n <= 100, exceed one-million? - < 1 sec <br />
+55 - How many Lychrel numbers are there below ten-thousand? - < 1 sec <br />
 56 - Considering natural numbers of the form, a^b, finding the maximum digital sum. > 3 sec <br />
 67 - Using an efficient algorithm find the maximal sum in the triangle? - 0.027 <br />
 
 ## In progress:
 
 47 - Find the first four consecutive integers to have four distinct primes factors. <br />
-55 - How many Lychrel numbers are there below ten-thousand? <br />
 97 - Find the last ten digits of the non-Mersenne prime: 28433 � 2^7830457 + 1. <br />
 
 ## Contact

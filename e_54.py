@@ -23,7 +23,8 @@ def enum(*sequential, **named):
     enums['reverse_mapping'] = reverse
     return type('Enum', (), enums)
 
-class Poker:
+class PokerRanking:
+
     _ranks=enum("High_Card",
                 "One_Pair",
                 "Two_Pairs",
@@ -36,14 +37,32 @@ class Poker:
                 "Flush",
                 "Royal_Flush")
 
+
+    def calculate_hand_rank(self, hand):
+        """
+        Given a PokerHand, calculate its value
+        The Poker hand is assumed to be sorted by value
+        """
+
+    def same_color(self, hand):
+        """
+        Define whether all cards in the given hand have the same color.
+        Returns a boolean
+        """
+        first_color = hand.cards[0].color
+        bools = [card.color == first_color for card in hand.cards]
+        return (len([x for x in bools if x is True]) == len(bools))
+
 class PokerGame:
     """
     A game is defined as two players having a hand of 5 cards each.
     """
-    def __init__(self, hand_1, hand_2):
+    def __init__(self, hand_1, hand_2):  # Could be more. Use lists instead
         # Should be PokerHands
         self.hand_1 = hand_1
+        self.hand_1_rank = 0
         self.hand_2 = hand_2
+        self.hand_2_rank = 0
 
 class PokerHand:
     def __init__(self, cards):
@@ -132,6 +151,10 @@ def winning_hands(filename, player=1):
     games = create_games(data)
 
     my_game = games[0]
+    my_hand = my_game.hand_1
+
+    pok = PokerRanking()
+    print pok.same_color(my_hand)
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

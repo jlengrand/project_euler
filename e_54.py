@@ -27,8 +27,7 @@ is a clear winner.
 
 How many hands does Player 1 win?
 '''
-
-from itertools import groupby
+import collections
 
 def enum(*sequential, **named):
     enums = dict(zip(sequential, range(len(sequential))), **named)
@@ -46,7 +45,7 @@ class PokerRanking:
                 "Flush",
                 "Full_House",
                 "Four_of_a_Kind",
-                "Straight Flush",
+                "Straight_Flush",
                 "Royal_Flush")
 
     def calculate_hand_rank(self, hand):
@@ -54,6 +53,28 @@ class PokerRanking:
         Given a PokerHand, calculate its value
         The Poker hand is assumed to be sorted by value
         """
+        rank = None
+        if(self.is_straight(hand)):
+            straight = True
+            rank = _ranks.Straight
+
+        if(self.is_flush(hand)):
+            flush = True
+            rank = _ranks.Flush  # this is better!
+
+        if straight or flush:  # We gonna finish early
+
+            if straight and flush:  # even better news
+                if is_royal_flush(hand):
+                    rank = _ranks.Royal_Flush  # Jackpot!
+                else:
+                    rank = _ranks.Straight_Flush  # Not bad :)
+
+            return rank
+
+        else:  # We have something less funny
+            print "Not yet!"
+
 
     def is_flush(self, hand):
         """
@@ -63,6 +84,25 @@ class PokerRanking:
         first_color = hand.cards[0].color
         bools = [card.color == first_color for card in hand.cards]
         return (len([x for x in bools if x is True]) == len(bools))
+
+    def is_royal_flush(self, hand, check=False):
+        """
+        Testing if we have a royal flush
+        We may check whether we have a flush and a straight first.
+        But in our current context, we already know this, so this is easier
+        """
+        if check:
+            straight = self.is_straight(hand)
+            flush = self.is_flush(hand)
+            res = (straight is True and flush is True)
+        else:
+            res = True
+
+        if res:
+            if hand.cards[0].value == Card._values[-1]:  # Highest value
+                return True
+
+        return False  # Not Royal Flush
 
     def is_straight(self, hand):
         """
@@ -175,6 +215,16 @@ def winning_hands(filename, player=1):
 
     my_game = games[0]
     my_hand = my_game.hand_1
+
+    print Card._values[-1]
+
+    aaa = [card.value for card in my_hand.cards]
+    print aaa
+    aaa[1] = "K"
+    print set(aaa)
+    bbb = collections.Counter(aaa).items()
+    print bbb
+    print len(bbb)
 
     pok = PokerRanking()
 

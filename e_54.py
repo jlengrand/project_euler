@@ -5,6 +5,19 @@ Created on 11 sept. 2013
 @author: Julien Lengrand-Lambert
 
 DESCRIPTION: Solves problem 54 of Project Euler
+
+Ranking Description
+High Card: Highest value card.
+One Pair: Two cards of the same value.
+Two Pairs: Two different pairs.
+Three of a Kind: Three cards of the same value.
+Straight: All cards are consecutive values.
+Flush: All cards of the same suit.
+Full House: Three of a kind and a pair.
+Four of a Kind: Four cards of the same value.
+Straight Flush: All cards are consecutive values of same suit.
+Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
+
 The file, poker.txt, contains one-thousand random hands dealt to two players.
 Each line of the file contains ten cards (separated by a single space):
 the first five are Player 1's cards and the last five are Player 2's cards.
@@ -15,7 +28,7 @@ is a clear winner.
 How many hands does Player 1 win?
 '''
 
-card_order = [1, 2, 3]
+from itertools import groupby
 
 def enum(*sequential, **named):
     enums = dict(zip(sequential, range(len(sequential))), **named)
@@ -37,16 +50,15 @@ class PokerRanking:
                 "Flush",
                 "Royal_Flush")
 
-
     def calculate_hand_rank(self, hand):
         """
         Given a PokerHand, calculate its value
         The Poker hand is assumed to be sorted by value
         """
 
-    def same_color(self, hand):
+    def same_suit(self, hand):
         """
-        Define whether all cards in the given hand have the same color.
+        Define whether all cards in the given hand have the same suit.
         Returns a boolean
         """
         first_color = hand.cards[0].color
@@ -154,7 +166,13 @@ def winning_hands(filename, player=1):
     my_hand = my_game.hand_1
 
     pok = PokerRanking()
-    print pok.same_color(my_hand)
+    print pok.same_suit(my_hand)
+
+    print [k for k, g in groupby('AAAABBBCCDAABBB')] #--> A B C D A B
+    print [len(list(g)) for k, g in groupby('AAAABBBCCD')] #--> AAAA BBB CC D
+
+    my_hand.cards[1].value = "K"
+    print [k for k, g in groupby(my_hand.cards, lambda x : x.value)] #--> A B C D A B
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

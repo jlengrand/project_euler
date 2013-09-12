@@ -41,12 +41,33 @@ class PokerGame:
     A game is defined as two players having a hand of 5 cards each.
     """
     def __init__(self, hand_1, hand_2):
+        # Should be PokerHands
         self.hand_1 = hand_1
         self.hand_2 = hand_2
 
-class Hand:
+class PokerHand:
     def __init__(self, cards):
-        self.cards = cards # should be 5
+        # should be 5 cards in a poker hand.
+        if len(cards) !=5 :
+            raise AttributeError("A Poker hand should be 5 cards")
+        # cards sorted on creation
+        self.cards = cards
+        self.sort_hand()
+
+    def __str__(self):
+        "How to print a full poker hand"
+        hand = ""
+        for card in self.cards:
+            hand += card.__str__() + " "
+        return hand
+
+    def sort_hand(self):
+        """
+        Sorts a hand of cards in descending order.
+        """
+        sorted_hand = list(self.cards)
+        sorted_hand.sort(key=lambda x: Card._values.index(x.value), reverse=True)
+        self.cards = sorted_hand
 
 class Card:
     _values = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
@@ -54,6 +75,12 @@ class Card:
     def __init__(self, value, color):
         self.value = value
         self.color = color
+
+    def __str__(self):
+        """
+        How to print a card
+        """
+        return self.value + self.color
 
 ##
 
@@ -92,25 +119,10 @@ def create_games(data):
             raise AttributeError("Expecting 5 cards!")
 
         poker_cards = [Card(card[0], card[1]) for card in cards]
-        return Hand(poker_cards)
+        return PokerHand(poker_cards)
 
     games = [PokerGame(create_hand(game[0]), create_hand(game[1]))  for game in data]
     return games
-
-
-def sort_hands(hands):
-    #FIXME: Not working. To refactor
-    def sort_hand(hand):
-        """
-        Sorts a hand of cards in descending order.
-        There should be no reference to card color
-        """
-        sorted_hand = list(hand)
-        sorted_hand.sort(key=lambda x: card_order.index(x[0]), reverse=True)
-        return sorted_hand
-    sorted_hands = [[sort_hand(h) for h in hand] for hand in hands]
-    #need to sort now
-    return sorted_hands
 
 def winning_hands(filename, player=1):
     """
@@ -119,21 +131,7 @@ def winning_hands(filename, player=1):
     data = load_data(filename)
     games = create_games(data)
 
-    #data = sort_hands(hands)
-    #print hands
-
-        # player_hand = data[0][0]
-        # player_card = player_hand[0]
-
-        # card = Card(player_card[0], player_card[1])
-        # print card.value
-        # print card.color
-
-        # print player_hand
-
-        # print Hand.Values.reverse_mapping['K']
-    # we want to knwo what is his rank
-    #get_rank(player_hand)
+    my_game = games[0]
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

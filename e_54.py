@@ -46,8 +46,7 @@ class PokerRanking:
                 "Flush",
                 "Full_House",
                 "Four_of_a_Kind",
-                "Straight",
-                "Flush",
+                "Straight Flush",
                 "Royal_Flush")
 
     def calculate_hand_rank(self, hand):
@@ -56,7 +55,7 @@ class PokerRanking:
         The Poker hand is assumed to be sorted by value
         """
 
-    def same_suit(self, hand):
+    def is_flush(self, hand):
         """
         Define whether all cards in the given hand have the same suit.
         Returns a boolean
@@ -64,6 +63,18 @@ class PokerRanking:
         first_color = hand.cards[0].color
         bools = [card.color == first_color for card in hand.cards]
         return (len([x for x in bools if x is True]) == len(bools))
+
+    def is_straight(self, hand):
+        """
+        Detect whether the user has a straight hand or not
+        """
+        list_values = [Card._values.index(card.value) for card in hand.cards]
+
+        for idx in range(len(list_values) - 1):
+            diff = list_values[idx + 1] - list_values[idx]
+            if diff != 1:
+                return False
+        return True
 
 class PokerGame:
     """
@@ -166,15 +177,6 @@ def winning_hands(filename, player=1):
     my_hand = my_game.hand_1
 
     pok = PokerRanking()
-    print pok.same_suit(my_hand)
-
-    print [k for k, g in groupby('AAAABBBCCDAABBB')] #--> A B C D A B
-    print [len(list(g)) for k, g in groupby('AAAABBBCCD')] #--> AAAA BBB CC D
-
-    my_hand.cards[1].value = "K"
-    print [k for k, g in groupby(my_hand.cards, lambda x : x.value)] #--> A B C D A B
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")
-    #print 1
-    #print "Answer : %d " % (winning_hands("./e_54_poker.txt"))

@@ -75,7 +75,6 @@ class PokerRanking:
 
 
         else:  # We have something less funny
-            #print "Not yet!"
             rank = self.same_cards(hand)  # All combinaisons that involve having several times the same cards
 
         return rank
@@ -86,12 +85,6 @@ class PokerRanking:
         We gonna search which
         """
         vals = [card.value for card in hand.cards]
-        print vals
-        # Modifying here to get what we want
-        #vals[1] = "K"
-        #vals[2] = "K"
-        #vals[3] = "K"
-        #print vals
 
         combs = collections.Counter(vals).items()
         # sorting by card count
@@ -196,8 +189,13 @@ class PokerRank:
         # We have to check the card values in care we have the same combination
         if self.rank_val == other_rank.rank_val:
             # let the fun begin!
-            for idx in range(len(self.cards)):
-                if self.cards[idx].value > other_rank.cards[idx].value:
+            ctr = 0
+            while(ctr < range(len(self.cards))):
+                idx_1 = Card._values.index(self.cards[ctr].value)
+                idx_2 = Card._values.index(other_rank.cards[ctr].value)
+                if idx_2 > idx_1:
+                    return False
+                elif idx_1 > idx_2:
                     return True
 
         return False
@@ -311,6 +309,8 @@ def who_wins(game):
     rank_1 = PokerRank(pok.calculate_hand_rank(game.hand_1), game.hand_1.cards)
     rank_2 = PokerRank(pok.calculate_hand_rank(game.hand_2), game.hand_2.cards)
 
+    print str(rank_1.rank_val) + " " + str(rank_2.rank_val)
+
     if rank_1 > rank_2:
         return 1
     elif rank_1 < rank_2:
@@ -327,7 +327,30 @@ def winning_hands(filename, player=1):
 
     my_game = games[0]
 
-    who_wins(my_game)
+    wins_1 = 0
+    wins_2 = 0
+    draws = 0
+    played = 0
+    for game in games[0:2]:
+    #for game in games:
+        ret = who_wins(game)
+        if ret == 1:
+            wins_1 += 1
+        elif ret == 2:
+            wins_2 += 1
+        elif ret == 0:
+            draws += 1
+        else:
+            raise Exception("Value not expected!")
+
+
+        print "########"
+        print "1: " + str(game.hand_1)
+        print "2: " + str(game.hand_2)
+        print "ret : " + str(ret)
+        played += 1
+
+    print "1 : " + str(wins_1) + ", 2 : " + str(wins_2) + ", draw : " + str(draws) + ", tot: " + str(played)
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

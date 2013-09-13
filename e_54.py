@@ -163,6 +163,13 @@ class PokerRank:
         self.cards = cards
         self.rank_val = rank_val # Should be one of the rank enums
 
+        #FIXME: This is a copy paste, and should probably be removed
+        vals = [card.value for card in self.cards]
+        combs = collections.Counter(vals).items()
+        # sorting by card count
+        combs = sorted(combs, key = lambda x: x[1], reverse=True)
+        self.combs = [comb[0] for comb in combs]
+
     def __eq__(self, other_rank):
         """
         Defines whether two ranks are equal
@@ -171,12 +178,12 @@ class PokerRank:
             return False
         else:
             # we also have to check each card
-            if len(self.cards) != len(other_rank.cards):
+            if len(self.combs) != len(other_rank.combs):
                 raise AttributeError("both ranks are supposed to have the same \
                     number of cards!")
 
-            for idx in range(len(self.cards)):
-                if self.cards[idx].value != other_rank.cards[idx].value:
+            for idx in range(len(self.combs)):
+                if self.combs[idx] != other_rank.combs[idx]:
                     return False
 
         return True  # True if we go till there.
@@ -190,9 +197,9 @@ class PokerRank:
         if self.rank_val == other_rank.rank_val:
             # let the fun begin!
             ctr = 0
-            while(ctr < range(len(self.cards))):
-                idx_1 = Card._values.index(self.cards[ctr].value)
-                idx_2 = Card._values.index(other_rank.cards[ctr].value)
+            while(ctr < range(len(self.combs))):
+                idx_1 = Card._values.index(self.combs[ctr])
+                idx_2 = Card._values.index(other_rank.combs[ctr])
                 if idx_2 > idx_1:
                     return False
                 elif idx_1 > idx_2:
@@ -268,8 +275,9 @@ def load_data(filename):
     hands = []
     file = open(filename, "r")
 
+    # FIXME: Needs an iterator!
     #for line in file :
-    for i in range(2):
+    for i in range(200):
         res = file.readline().rstrip() # also removes eol
         res_spl = res.split(" ")
 
@@ -309,8 +317,6 @@ def who_wins(game):
     rank_1 = PokerRank(pok.calculate_hand_rank(game.hand_1), game.hand_1.cards)
     rank_2 = PokerRank(pok.calculate_hand_rank(game.hand_2), game.hand_2.cards)
 
-    print str(rank_1.rank_val) + " " + str(rank_2.rank_val)
-
     if rank_1 > rank_2:
         return 1
     elif rank_1 < rank_2:
@@ -331,8 +337,12 @@ def winning_hands(filename, player=1):
     wins_2 = 0
     draws = 0
     played = 0
-    for game in games[0:2]:
+
+    #for game in games[0:5]:
     #for game in games:
+    #for game in games[24]:
+    game = games[24]
+    if True:
         ret = who_wins(game)
         if ret == 1:
             wins_1 += 1
@@ -343,8 +353,10 @@ def winning_hands(filename, player=1):
         else:
             raise Exception("Value not expected!")
 
+        # FIXME: Bug : Data has to be read in combinaison order, not in value order
 
         print "########"
+        print "played: " + str(played)
         print "1: " + str(game.hand_1)
         print "2: " + str(game.hand_2)
         print "ret : " + str(ret)

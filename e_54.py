@@ -301,6 +301,23 @@ def create_games(data):
     games = [PokerGame(create_hand(game[0]), create_hand(game[1]))  for game in data]
     return games
 
+def who_wins(game):
+    """
+    Returns the index of the player who won the game in a game with several
+    hands.
+    Currently works with only 2 hands. We could generalize that easily.
+    """
+    pok = PokerRanking()
+    rank_1 = PokerRank(pok.calculate_hand_rank(game.hand_1), game.hand_1.cards)
+    rank_2 = PokerRank(pok.calculate_hand_rank(game.hand_2), game.hand_2.cards)
+
+    if rank_1 > rank_2:
+        return 1
+    elif rank_1 < rank_2:
+        return 2
+    else:
+        return 0
+
 def winning_hands(filename, player=1):
     """
     Returns the number of winning hands for player 1 or 2
@@ -309,22 +326,8 @@ def winning_hands(filename, player=1):
     games = create_games(data)
 
     my_game = games[0]
-    my_hand = my_game.hand_1
-    my_hand.cards[1].value = "K"
-    my_other_hand = my_game.hand_2
 
-    pok = PokerRanking()
-    print pok.calculate_hand_rank(my_hand)
-    print pok.calculate_hand_rank(my_other_hand)
-
-    a = PokerRank(3, my_hand.cards)
-    b = PokerRank(3, my_other_hand.cards)
-
-    print a == b
-    print a > b
-    print a >= b
-    print a < b
-    print a <= b
+    who_wins(my_game)
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

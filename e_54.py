@@ -188,6 +188,29 @@ class PokerRank:
 
         return True  # True if we go till there.
 
+    def __gt__(self, other_rank):
+        "Define whether our rank if better than the other"
+        if self.rank_val > other_rank.rank_val:
+            return True
+
+        # We have to check the card values in care we have the same combination
+        if self.rank_val == other_rank.rank_val:
+            # let the fun begin!
+            for idx in range(len(self.cards)):
+                if self.cards[idx].value > other_rank.cards[idx].value:
+                    return True
+
+        return False
+
+    def __ge__(self, other_rank):
+        return (self.__gt__(other_rank) or self.__eq__(other_rank))
+
+    def __st__(self, other_rank):
+        return not(self.__ge__(other_rank))
+
+    def __se__(self, other_rank):
+        return not(self.__gt__(other_rank))
+
 class PokerGame:
     """
     A game is defined as two players having a hand of 5 cards each.
@@ -287,14 +310,21 @@ def winning_hands(filename, player=1):
 
     my_game = games[0]
     my_hand = my_game.hand_1
+    my_hand.cards[1].value = "K"
+    my_other_hand = my_game.hand_2
 
     pok = PokerRanking()
     print pok.calculate_hand_rank(my_hand)
+    print pok.calculate_hand_rank(my_other_hand)
 
     a = PokerRank(3, my_hand.cards)
-    b = PokerRank(3, my_hand.cards)
+    b = PokerRank(3, my_other_hand.cards)
 
     print a == b
+    print a > b
+    print a >= b
+    print a < b
+    print a <= b
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

@@ -178,8 +178,15 @@ class PokerRank:
             return False
         else:
             # we also have to check each card
-            vals = [x.value == y.value for x, y in self.cards, other_rank.cards]
-            print vals
+            if len(self.cards) != len(other_rank.cards):
+                raise AttributeError("both ranks are supposed to have the same \
+                    number of cards!")
+
+            for idx in range(len(self.cards)):
+                if self.cards[idx].value != other_rank.cards[idx].value:
+                    return False
+
+        return True  # True if we go till there.
 
 class PokerGame:
     """

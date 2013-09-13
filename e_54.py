@@ -57,24 +57,51 @@ class PokerRanking:
         if(self.is_straight(hand)):
             straight = True
             rank = _ranks.Straight
+        else:
+            straight = False
 
         if(self.is_flush(hand)):
             flush = True
             rank = _ranks.Flush  # this is better!
+        else:
+            flush = False
 
         if straight or flush:  # We gonna finish early
-
             if straight and flush:  # even better news
                 if is_royal_flush(hand):
                     rank = _ranks.Royal_Flush  # Jackpot!
                 else:
                     rank = _ranks.Straight_Flush  # Not bad :)
 
-            return rank
 
         else:  # We have something less funny
-            print "Not yet!"
+            #print "Not yet!"
+            rank = self.same_cards(hand)  # All combinaisons that involve having several times the same cards
 
+        return rank
+
+    def same_cards(self, hand):
+        """
+        The hand s rank is based on pairs, or other card combination.
+        We gonna search which
+        """
+        vals = [card.value for card in hand.cards]
+        combs = collections.Counter(vals).items()
+
+        if len(combs) == 5:
+            rank = self._ranks.High_Card  # crappy hand
+        elif len(combs) == 4:
+            rank = self._ranks.One_Pair
+        elif len(combo) == 3:
+            # Two pairs, or Three of a Kind
+            rank = self._ranks.Two_Pairs
+            rank = self._ranks.Three_of_a_Kind
+        elif len(combo) == 2:
+            # Full House or Four of a Kind
+            rank = self._ranks.Full_House
+            rank = self._ranks.Four_of_a_Kind
+
+        return rank
 
     def is_flush(self, hand):
         """
@@ -216,17 +243,8 @@ def winning_hands(filename, player=1):
     my_game = games[0]
     my_hand = my_game.hand_1
 
-    print Card._values[-1]
-
-    aaa = [card.value for card in my_hand.cards]
-    print aaa
-    aaa[1] = "K"
-    print set(aaa)
-    bbb = collections.Counter(aaa).items()
-    print bbb
-    print len(bbb)
-
     pok = PokerRanking()
+    print pok.calculate_hand_rank(my_hand)
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

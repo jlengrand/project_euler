@@ -158,6 +158,29 @@ class PokerRanking:
                 return False
         return True
 
+
+class PokerRank:
+    """
+    Defines a set of cards rank, with all info needed to
+    precisely compare two ranks
+    """
+    def __init__(self, rank_val, cards):
+        # cards should be only the cards needed to completely identify the
+        # combination
+        self.cards = cards
+        self.rank_val = rank_val # Should be one of the rank enums
+
+    def __eq__(self, other_rank):
+        """
+        Defines whether two ranks are equal
+        """
+        if self.rank_val != other_rank.rank_val:
+            return False
+        else:
+            # we also have to check each card
+            vals = [x.value == y.value for x, y in self.cards, other_rank.cards]
+            print vals
+
 class PokerGame:
     """
     A game is defined as two players having a hand of 5 cards each.
@@ -260,6 +283,11 @@ def winning_hands(filename, player=1):
 
     pok = PokerRanking()
     print pok.calculate_hand_rank(my_hand)
+
+    a = PokerRank(3, my_hand.cards)
+    b = PokerRank(3, my_hand.cards)
+
+    print a == b
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

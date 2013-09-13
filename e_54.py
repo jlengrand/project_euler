@@ -86,20 +86,35 @@ class PokerRanking:
         We gonna search which
         """
         vals = [card.value for card in hand.cards]
+        print vals
+        # Modifying here to get what we want
+        #vals[1] = "K"
+        #vals[2] = "K"
+        #vals[3] = "K"
+        #print vals
+
         combs = collections.Counter(vals).items()
+        # sorting by card count
+        combs = sorted(combs, key = lambda x: x[1], reverse=True)
 
         if len(combs) == 5:
             rank = self._ranks.High_Card  # crappy hand
         elif len(combs) == 4:
             rank = self._ranks.One_Pair
-        elif len(combo) == 3:
+        elif len(combs) == 3:
             # Two pairs, or Three of a Kind
-            rank = self._ranks.Two_Pairs
-            rank = self._ranks.Three_of_a_Kind
-        elif len(combo) == 2:
+            if combs[0][1] == 3:
+                rank = self._ranks.Three_of_a_Kind
+            else:
+                rank = self._ranks.Two_Pairs
+        elif len(combs) == 2:
             # Full House or Four of a Kind
-            rank = self._ranks.Full_House
-            rank = self._ranks.Four_of_a_Kind
+            if combs[0][1] == 4:
+                rank = self._ranks.Four_of_a_Kind
+            else:
+                rank = self._ranks.Full_House
+        else:
+            raise Exception("Unable to find player's rank!")
 
         return rank
 

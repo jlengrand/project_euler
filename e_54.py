@@ -56,22 +56,22 @@ class PokerRanking:
         rank = None
         if(self.is_straight(hand)):
             straight = True
-            rank = _ranks.Straight
+            rank = self._ranks.Straight
         else:
             straight = False
 
         if(self.is_flush(hand)):
             flush = True
-            rank = _ranks.Flush  # this is better!
+            rank = self._ranks.Flush  # this is better!
         else:
             flush = False
 
         if straight or flush:  # We gonna finish early
             if straight and flush:  # even better news
-                if is_royal_flush(hand):
-                    rank = _ranks.Royal_Flush  # Jackpot!
+                if self.is_royal_flush(hand):
+                    rank = self._ranks.Royal_Flush  # Jackpot!
                 else:
-                    rank = _ranks.Straight_Flush  # Not bad :)
+                    rank = self._ranks.Straight_Flush  # Not bad :)
 
 
         else:  # We have something less funny
@@ -205,6 +205,8 @@ class PokerRank:
                 elif idx_1 > idx_2:
                     return True
 
+                ctr += 1;
+
         return False
 
     def __ge__(self, other_rank):
@@ -266,33 +268,25 @@ class Card:
 
 ##
 
-def load_data(filename):
+def load_data(line):
     """
-    Loads the given file according to the problem description.
+    Processes the input line according to the Description
     Returns a list of two hands of poker players.
     """
     cards_in_poker = 5
-    hands = []
-    file = open(filename, "r")
 
-    # FIXME: Needs an iterator!
-    #for line in file :
-    for i in range(200):
-        res = file.readline().rstrip() # also removes eol
-        res_spl = res.split(" ")
+    res = line.rstrip() # also removes eol
+    res_spl = res.split(" ")
 
-        # creating left and right player's hands
-        left = res_spl[:cards_in_poker]
-        right = res_spl[cards_in_poker:]
+    # creating left and right player's hands
+    left = res_spl[:cards_in_poker]
+    right = res_spl[cards_in_poker:]
 
-        hands.append([left, right])
+    return [left, right]
 
-    file.close()
-    return hands
-
-def create_games(data):
+def create_game(data):
     """
-    Transforms a list of lists of poker cards into proper Poker games
+    Transforms a list of poker cards into a proper Poker game
     """
     def create_hand(cards):
         """
@@ -304,8 +298,8 @@ def create_games(data):
         poker_cards = [Card(card[0], card[1]) for card in cards]
         return PokerHand(poker_cards)
 
-    games = [PokerGame(create_hand(game[0]), create_hand(game[1]))  for game in data]
-    return games
+    game = PokerGame(create_hand(data[0]), create_hand(data[1]))
+    return game
 
 def who_wins(game):
     """
@@ -318,32 +312,48 @@ def who_wins(game):
     rank_2 = PokerRank(pok.calculate_hand_rank(game.hand_2), game.hand_2.cards)
 
     if rank_1 > rank_2:
-        return 1
+        return 1, [rank_1, rank_2]
     elif rank_1 < rank_2:
-        return 2
+        return 2, [rank_1, rank_2]
     else:
-        return 0
+        return 0, [rank_1, rank_2]
 
 def winning_hands(filename, player=1):
     """
     Returns the number of winning hands for player 1 or 2
     """
-    data = load_data(filename)
-    games = create_games(data)
+    file = open(filename, "r")
 
-    my_game = games[0]
+    # ranks statistics
+    ranks_1 = [0] * 10 # number of ranks
+    ranks_2 = [0] * 10 # number of ranks
+    #ranks more complex statistics
+    #all_ranks = [[0] * 10] * 10 # for some reason this creates shallow copies
+    all_ranks = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
     wins_1 = 0
     wins_2 = 0
     draws = 0
     played = 0
 
-    #for game in games[0:5]:
-    #for game in games:
-    #for game in games[24]:
-    game = games[24]
-    if True:
-        ret = who_wins(game)
+    for line in file :
+    #for i in range(2):
+        # loads and prepares data
+        #line = file.readline()
+        data = load_data(line)
+        game = create_game(data)
+
+        # finds winner
+        ret, ranks = who_wins(game)
         if ret == 1:
             wins_1 += 1
         elif ret == 2:
@@ -353,16 +363,41 @@ def winning_hands(filename, player=1):
         else:
             raise Exception("Value not expected!")
 
-        # FIXME: Bug : Data has to be read in combinaison order, not in value order
-
-        print "########"
-        print "played: " + str(played)
-        print "1: " + str(game.hand_1)
-        print "2: " + str(game.hand_2)
-        print "ret : " + str(ret)
         played += 1
 
+        # ranks statistics
+        ranks_1[ranks[0].rank_val] += 1
+        ranks_2[ranks[1].rank_val] += 1
+        #ranks more complex statistics
+        all_ranks[ranks[0].rank_val][ranks[1].rank_val] += 1
+
+        #if ((ranks[0].rank_val != 0) and (ranks[1].rank_val != 0)):
+        #if ((ranks[0].rank_val != 0) and (ranks[1].rank_val > 1)):
+        # if ((ranks[0].rank_val > 4) or (ranks[1].rank_val > 4)):
+
+        #     print "########"
+        #     print "played: " + str(played)
+        #     print "1: " + str(game.hand_1)
+        #     print "2: " + str(game.hand_2)
+        #     print "ret : " + str(ret)
+        #     print "rank 1 : " + str(ranks[0].rank_val) + ", rank 2 : " + str(ranks[1].rank_val)
+        #     print "########"
+
+        #     res = raw_input("Press Enter to continue...")
+        #
+
     print "1 : " + str(wins_1) + ", 2 : " + str(wins_2) + ", draw : " + str(draws) + ", tot: " + str(played)
+
+    print "####"
+    print "ranks 1: "
+    print ranks_1
+    print "ranks 2: "
+    print ranks_2
+    print "####"
+    for a_rank in all_ranks:
+        print a_rank
+
+    file.close()
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

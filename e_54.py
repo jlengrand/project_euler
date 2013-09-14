@@ -158,8 +158,6 @@ class PokerRank:
     precisely compare two ranks
     """
     def __init__(self, rank_val, cards):
-        # cards should be only the cards needed to completely identify the
-        # combination
         self.cards = cards
         self.rank_val = rank_val # Should be one of the rank enums
 
@@ -169,6 +167,12 @@ class PokerRank:
         # sorting by card count
         combs = sorted(combs, key = lambda x: x[1], reverse=True)
         self.combs = [comb[0] for comb in combs]
+
+        # ugly hack here
+        self.more = [comb[0] for comb in combs if comb[1] > 1] # here we sort by card count
+        self.single = [comb[0] for comb in combs if comb[1] == 1] # but for single cards, we have to sort by value
+        self.single = sorted(self.single, key = lambda x: Card._values.index(x), reverse=True)
+        self.combs = self.more + self.single
 
     def __eq__(self, other_rank):
         """
@@ -311,6 +315,7 @@ def who_wins(game):
     rank_1 = PokerRank(pok.calculate_hand_rank(game.hand_1), game.hand_1.cards)
     rank_2 = PokerRank(pok.calculate_hand_rank(game.hand_2), game.hand_2.cards)
 
+
     if rank_1 > rank_2:
         return 1, [rank_1, rank_2]
     elif rank_1 < rank_2:
@@ -371,19 +376,20 @@ def winning_hands(filename, player=1):
         #ranks more complex statistics
         all_ranks[ranks[0].rank_val][ranks[1].rank_val] += 1
 
+        if ret == 1:
         #if ((ranks[0].rank_val != 0) and (ranks[1].rank_val != 0)):
         #if ((ranks[0].rank_val != 0) and (ranks[1].rank_val > 1)):
         # if ((ranks[0].rank_val > 4) or (ranks[1].rank_val > 4)):
 
-        #     print "########"
-        #     print "played: " + str(played)
-        #     print "1: " + str(game.hand_1)
-        #     print "2: " + str(game.hand_2)
-        #     print "ret : " + str(ret)
-        #     print "rank 1 : " + str(ranks[0].rank_val) + ", rank 2 : " + str(ranks[1].rank_val)
-        #     print "########"
+            print "########"
+            print "played: " + str(played)
+            print "1: " + str(game.hand_1)
+            print "2: " + str(game.hand_2)
+            print "ret : " + str(ret)
+            print "rank 1 : " + str(ranks[0].rank_val) + ", rank 2 : " + str(ranks[1].rank_val)
+            print "########"
 
-        #     res = raw_input("Press Enter to continue...")
+            res = raw_input("Press Enter to continue...")
         #
 
     print "1 : " + str(wins_1) + ", 2 : " + str(wins_2) + ", draw : " + str(draws) + ", tot: " + str(played)
@@ -399,5 +405,32 @@ def winning_hands(filename, player=1):
 
     file.close()
 
+def test():
+
+    data = [["7C", "6D", "5D", "5H", "3S"],
+            ["JC", "5C", "5S", "3D", "2H"]]
+
+    game = create_game(data)
+
+    # finds winner
+    ret, ranks = who_wins(game)
+    if ret == 1:
+        print "1 wins"
+    elif ret == 2:
+        print "2 wins"
+    elif ret == 0:
+        print "Draw!"
+    else:
+        raise Exception("Value not expected!")
+
+    print "########"
+    print "1: " + str(game.hand_1)
+    print "2: " + str(game.hand_2)
+    print "ret : " + str(ret)
+    print "rank 1 : " + str(ranks[0].rank_val) + ", rank 2 : " + str(ranks[1].rank_val)
+    print "########"
+
+
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")
+    #test()

@@ -331,31 +331,13 @@ def winning_hands(filename, player=1):
     """
     file = open(filename, "r")
 
-    # ranks statistics
-    ranks_1 = [0] * 10 # number of ranks
-    ranks_2 = [0] * 10 # number of ranks
-    #ranks more complex statistics
-    #all_ranks = [[0] * 10] * 10 # for some reason this creates shallow copies
-    all_ranks = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
     wins_1 = 0
     wins_2 = 0
     draws = 0
     played = 0
 
     for line in file :
-    #for i in range(2):
         # loads and prepares data
-        #line = file.readline()
         data = load_data(line)
         game = create_game(data)
 
@@ -372,66 +354,9 @@ def winning_hands(filename, player=1):
 
         played += 1
 
-        # ranks statistics
-        ranks_1[ranks[0].rank_val] += 1
-        ranks_2[ranks[1].rank_val] += 1
-        #ranks more complex statistics
-        all_ranks[ranks[0].rank_val][ranks[1].rank_val] += 1
-
-        #if ret == 1:
-        #if ((ranks[0].rank_val != 0) and (ranks[1].rank_val != 0)):
-        #if ((ranks[0].rank_val != 0) and (ranks[1].rank_val > 1)):
-        if ((ranks[0].rank_val == 4) or (ranks[1].rank_val == 4)):
-
-            print "########"
-            print "played: " + str(played)
-            print "1: " + str(game.hand_1)
-            print "2: " + str(game.hand_2)
-            print "ret : " + str(ret)
-            print "rank 1 : " + str(ranks[0].rank_val) + ", rank 2 : " + str(ranks[1].rank_val)
-            print "########"
-
-            #res = raw_input("Press Enter to continue...")
-        #
-
     print "1 : " + str(wins_1) + ", 2 : " + str(wins_2) + ", draw : " + str(draws) + ", tot: " + str(played)
 
-    print "####"
-    print "ranks 1: "
-    print ranks_1
-    print "ranks 2: "
-    print ranks_2
-    print "####"
-    for a_rank in all_ranks:
-        print a_rank
-
     file.close()
-
-def test():
-
-    data = [["KC", "QD", "JD", "TH", "9S"],
-            ["JC", "5C", "5S", "3D", "3H"]]
-
-    game = create_game(data)
-
-    # finds winner
-    ret, ranks = who_wins(game)
-    if ret == 1:
-        print "1 wins"
-    elif ret == 2:
-        print "2 wins"
-    elif ret == 0:
-        print "Draw!"
-    else:
-        raise Exception("Value not expected!")
-
-    print "########"
-    print "1: " + str(game.hand_1)
-    print "2: " + str(game.hand_2)
-    print "ret : " + str(ret)
-    print "rank 1 : " + str(ranks[0].rank_val) + ", rank 2 : " + str(ranks[1].rank_val)
-    print "########"
-
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")

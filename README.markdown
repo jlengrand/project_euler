@@ -67,6 +67,7 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 50 - Which prime, below one-million, can be written as the sum of the most consecutive primes? - **~= 1 hour** <br />
 52 - Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain the same digits. - 2min <br />
 53 - How many values of C(n,r), for 1 <= n <= 100, exceed one-million? - < 1 sec <br />
+54 - How many hands does Player 1 win in radndom hands of Poker? - < 1 sec <br />
 55 - How many Lychrel numbers are there below ten-thousand? - < 1 sec <br />
 56 - Considering natural numbers of the form, a^b, finding the maximum digital sum. > 3 sec <br />
 67 - Using an efficient algorithm find the maximal sum in the triangle? - 0.027 <br />
@@ -83,4 +84,6 @@ Feel free to mail me for any comment or request.
 
 You can contact me at julien at lengrand dot fr, or on my [current website](http://www.lengrand.fr)
 
-Last update : 21/10/2012
+![Current Project Euler status](http://projecteuler.net/profile/jlengrand.png)
+
+Last update : 15/09/2013

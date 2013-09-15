@@ -146,7 +146,9 @@ class PokerRanking:
         list_values = [Card._values.index(card.value) for card in hand.cards]
 
         for idx in range(len(list_values) - 1):
-            diff = list_values[idx + 1] - list_values[idx]
+
+            diff = list_values[idx] - list_values[idx + 1]
+
             if diff != 1:
                 return False
         return True
@@ -376,10 +378,10 @@ def winning_hands(filename, player=1):
         #ranks more complex statistics
         all_ranks[ranks[0].rank_val][ranks[1].rank_val] += 1
 
-        if ret == 1:
+        #if ret == 1:
         #if ((ranks[0].rank_val != 0) and (ranks[1].rank_val != 0)):
         #if ((ranks[0].rank_val != 0) and (ranks[1].rank_val > 1)):
-        # if ((ranks[0].rank_val > 4) or (ranks[1].rank_val > 4)):
+        if ((ranks[0].rank_val == 4) or (ranks[1].rank_val == 4)):
 
             print "########"
             print "played: " + str(played)
@@ -389,7 +391,7 @@ def winning_hands(filename, player=1):
             print "rank 1 : " + str(ranks[0].rank_val) + ", rank 2 : " + str(ranks[1].rank_val)
             print "########"
 
-            res = raw_input("Press Enter to continue...")
+            #res = raw_input("Press Enter to continue...")
         #
 
     print "1 : " + str(wins_1) + ", 2 : " + str(wins_2) + ", draw : " + str(draws) + ", tot: " + str(played)
@@ -407,8 +409,8 @@ def winning_hands(filename, player=1):
 
 def test():
 
-    data = [["7C", "6D", "5D", "5H", "3S"],
-            ["JC", "5C", "5S", "3D", "2H"]]
+    data = [["KC", "QD", "JD", "TH", "9S"],
+            ["JC", "5C", "5S", "3D", "3H"]]
 
     game = create_game(data)
 
@@ -433,4 +435,3 @@ def test():
 
 if __name__ == '__main__':
     winning_hands("./e_54_poker.txt")
-    #test()

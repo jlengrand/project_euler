@@ -64,6 +64,7 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 45 - Find the next triangle number that is also pentagonal and hexagonal. - < 1 sec <br />
 46 - What is the smallest odd composite that cannot be written as the sum of a prime and twice a square? - < 6 sec <br />
 48 - Find the last ten digits of 1^1 + 2^2 + ... + 1000^1000. - 0.053 <br />
+49 - Prime permutations - 14.8 <br />
 50 - Which prime, below one-million, can be written as the sum of the most consecutive primes? - **~= 1 hour** <br />
 52 - Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, contain the same digits. - 2min <br />
 53 - How many values of C(n,r), for 1 <= n <= 100, exceed one-million? - < 1 sec <br />
@@ -86,4 +87,4 @@ You can contact me at julien at lengrand dot fr, or on my [current website](http
 
 ![Current Project Euler status](http://projecteuler.net/profile/jlengrand.png)
 
-Last update : 15/09/2013
+Last update : 22/05/2014

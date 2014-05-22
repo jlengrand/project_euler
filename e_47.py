@@ -20,9 +20,19 @@ Find the first four consecutive integers to have four distinct primes factors. W
 '''
 import pickle
 
+# list of primes up to one million.
+plist = pickle.load(open("primes_list.dup", "rb"))
+
+
+def is_prime(val):
+    """
+    Returns True if the number is prime
+    """
+    return (val in plist)
+
 def consecutive_primes(num):
     """
-    Returns the first of the firs num consecutive primes.
+    Returns the first of the first num consecutive primes.
     """
 
 

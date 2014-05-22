@@ -14,6 +14,7 @@ but there is one other 4-digit increasing sequence.
 What 12-digit number do you form by concatenating the three terms in this sequence?
 '''
 import pickle
+import itertools
 
 # list of primes up to one million.
 plist = pickle.load(open("primes_list.dup", "rb"))
@@ -22,7 +23,7 @@ def fourLengthPrime():
     """
     Returns the list of all prime numbers of length 4
     """
-    return(val for val in plist if len(str(val)) == 4)
+    return[val for val in plist if len(str(val)) == 4]
 
 def isPrime(val):
     """
@@ -45,27 +46,53 @@ def all_permutations(seq):
 def getPrimesPermutations(primes, length):
     """
     Returns all the lists of primes that are permutations from one another,
-    and of size at least 3.
+    of size 3 and that make an arithmetic suite.
     """
-    if True:
-    #for prime in primes :
-        prime = primes.next()
-        perms = [int(val) for val in all_permutations(str(prime))]
-        print perms
+    res = []
+    idx = 0
+    for prime in primes :
+        idx += 1
+        print "%d / %d" % (idx, len(primes))
+        perms = findPrimePerms(prime)
+
+        # gets all length 3 prime combinations
+        els = None
+        if perms > 2:
+            els = [list(x) for x in itertools.combinations(perms, 3)]
+
+        if els != None:
+            for primeList in els:
+                if isArithmetic(primeList):
+                    res.append(primeList)
+    return res # removes duplicates
+
+def isArithmetic(aList):
+    """
+    Returns true if the list is arithmetic.
+    Elements of the list are expected to be numbers.
+    """
+    diffs = [a - b for a, b in zip(aList[1:], aList[:-1])]
+    res = list(set(diffs)) # removes duplicates
+    return (len(res) == 1)
 
 def findPrimePerms(prime):
     """
     Returns all the list of primes that are permutations from prime
     """
     perms = [int(val) for val in all_permutations(str(prime)) if (isPrime(int(val)) and len(str(int(val))) == 4)]
-    res = list(set(perms)) # rermoves duplicates
+    res = list(set(perms)) # removes duplicates
     if len(res) > 2:
         return res
 
 if __name__ == '__main__':
     primes = fourLengthPrime()
-    print findPrimePerms(primes.next())
-    print findPrimePerms(primes.next())
-    print findPrimePerms(primes.next())
-    print findPrimePerms(primes.next())
+    print getPrimesPermutations(primes, 3)
+
+    #itertools.combinations(lst, i)]
+    #getPrimesPermutations(primes, 3)
+    # try:
+    #     while primes.next():
+    #         print primes.next()
+    # except StopIteration:
+    #         print "Reached end of list"
     #print "Answer : %d " % (last_ten())

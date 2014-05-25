@@ -4,8 +4,32 @@
 		"selected_items":
 		[
 			[
+				"sol",
+				"solution"
+			],
+			[
+				"all_",
+				"all_pass"
+			],
+			[
+				"asci",
+				"ascii_range"
+			],
+			[
 				"all",
-				"all_permutations"
+				"all_passwords"
+			],
+			[
+				"find",
+				"find_most_probable"
+			],
+			[
+				"all_p",
+				"all_pass"
+			],
+			[
+				"rep",
+				"repeat_password"
 			],
 			[
 				"ele",
@@ -34,10 +58,6 @@
 			[
 				"ee",
 				"election_id"
-			],
-			[
-				"find",
-				"find_by_uuid"
 			],
 			[
 				"ca",
@@ -477,6 +497,14 @@
 	},
 	"file_history":
 	[
+		"/home/jll/Documents/01_perso/03_project_euler/e_59.py",
+		"/home/jll/Documents/01_perso/03_project_euler/README.markdown",
+		"/home/jll/Documents/01_perso/03_project_euler/e_59_cipher1.txt",
+		"/home/jll/Documents/01_perso/03_project_euler/e_18.py",
+		"/home/jll/Documents/01_perso/03_project_euler/e_13.data",
+		"/home/jll/Documents/01_perso/03_project_euler/e_18.data",
+		"/home/jll/Documents/01_perso/03_project_euler/e_22.data",
+		"/home/jll/Documents/01_perso/03_project_euler/e_22.py",
 		"/home/jll/Documents/01_perso/03_project_euler/e_47.py",
 		"/home/jll/Documents/01_perso/00_myelections/app/controllers/application_controller.rb",
 		"/home/jll/Documents/01_perso/00_myelections/app/views/new_election_admin_mailer/new_election_admin_email.text.erb",
@@ -596,15 +624,7 @@
 		"/home/jll/Documents/01_perso/18_blog/welcome-in-my-world/index.html",
 		"/home/jll/Documents/01_perso/18_blog/posts.md",
 		"/home/jll/Documents/01_perso/18_blog/404.md",
-		"/home/jll/Documents/01_perso/18_blog/_config.yml",
-		"/home/jll/Documents/01_perso/18_blog/_posts/2012-03-05-computer-vision-companies.markdown",
-		"/home/jll/Documents/01_perso/18_blog/_posts/2011-10-17-17.markdown",
-		"/home/jll/Documents/01_perso/18_blog/_posts/2011-10-17-home.markdown",
-		"/home/jll/Documents/01_perso/18_blog/_posts/2011-10-13-job-space.markdown",
-		"/home/jll/Documents/01_perso/18_blog/_posts/2012-09-07-ivolution-development-status-36.markdown",
-		"/home/jll/Documents/01_perso/18_blog/_posts/2012-06-11-remove-all-your-thumbs-files.markdown",
-		"/home/jll/Documents/01_perso/18_blog/_posts/2012-06-04-is-descartes-the-father-of-agile-development.markdown",
-		"/home/jll/Documents/01_perso/18_blog/_posts/2012-02-22-computer-vision-companies.markdown"
+		"/home/jll/Documents/01_perso/18_blog/_config.yml"
 	],
 	"find":
 	{
@@ -821,7 +841,7 @@
 	},
 	"output.exec":
 	{
-		"height": 236.0
+		"height": 253.0
 	},
 	"output.jenkinsIndicator":
 	{

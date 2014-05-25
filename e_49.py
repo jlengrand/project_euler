@@ -87,12 +87,4 @@ def findPrimePerms(prime):
 if __name__ == '__main__':
     primes = fourLengthPrime()
     print getPrimesPermutations(primes, 3)
-
-    #itertools.combinations(lst, i)]
-    #getPrimesPermutations(primes, 3)
-    # try:
-    #     while primes.next():
-    #         print primes.next()
-    # except StopIteration:
-    #         print "Reached end of list"
     #print "Answer : %d " % (last_ten())

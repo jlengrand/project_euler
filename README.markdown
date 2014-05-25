@@ -71,11 +71,14 @@ So you may find some of the code here quite ugly. And this is the case :). Why o
 54 - How many hands does Player 1 win in radndom hands of Poker? - < 1 sec <br />
 55 - How many Lychrel numbers are there below ten-thousand? - < 1 sec <br />
 56 - Considering natural numbers of the form, a^b, finding the maximum digital sum. > 3 sec <br />
+59 - Decrypt XOR ASCII - 23.4s<br />
 67 - Using an efficient algorithm find the maximal sum in the triangle? - 0.027 <br />
 
 ## In progress:
 
 47 - Find the first four consecutive integers to have four distinct primes factors. <br />
+57 - How many fractions contain a numerator with more digits than denominator? <br />
+58 - What is the side length of the square spiral for which the ratio of primes along both diagonals first falls below 10%? <br />
 97 - Find the last ten digits of the non-Mersenne prime: 28433 � 2^7830457 + 1. <br />
 
 ## Contact
@@ -87,4 +90,4 @@ You can contact me at julien at lengrand dot fr, or on my [current website](http
 
 ![Current Project Euler status](http://projecteuler.net/profile/jlengrand.png)
 
-Last update : 22/05/2014
+Last update : 25/05/2014
